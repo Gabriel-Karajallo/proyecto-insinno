@@ -1,1 +1,44 @@
-<p>login works!</p>
+<div class="login-container">
+  <mat-card class="login-card">
+    <div class="text-center">
+      <img src="./assets/logo.png" alt="Logo" class="mt-4">
+    </div>
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <form class="p-4" [formGroup]="loginForm" (ngSubmit)="ngOnSubmit()">
+
+        <mat-form-field  class="full-width mt-2 mb-2">
+          <mat-label>Usuario</mat-label>
+          <input matInput formControlName="username" type="text"/>
+          <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+            El nombre de usuario es obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field  class="full-width mb-2">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="password" type="password"/>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            La contraseña es obligatoria.
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+            La contraseña debe tener al menos 6 caracteres.
+          </mat-error>
+        </mat-form-field>
+
+        <div class="text-center">
+          <button class="" mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
+        </div>
+
+        <div class="text-center mt-4 mb-2 parrafo">
+          <p class="mb-0">¿No tienes cuenta? <a [routerLink]="['/register']" routerLinkActive="router-link-active"  href="" class="">Regístrate</a></p>
+        </div>
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>

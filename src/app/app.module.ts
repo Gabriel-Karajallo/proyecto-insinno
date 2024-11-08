@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from '../../../heroes-app/src/app/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,11 @@ import { Error404PageComponent } from './shared/pages/error404-page/error404-pag
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     provideAnimationsAsync()
