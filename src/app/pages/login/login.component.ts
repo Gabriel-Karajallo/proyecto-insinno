@@ -1,0 +1,55 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../core/auth/auth.service';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
+})
+export class LoginComponent implements OnInit{
+
+  errorMessage: string = '';
+
+  public loginForm: FormGroup;
+
+  //formulario y validaciones
+  constructor(
+    private fb: FormBuilder,
+    private AuthService: AuthService,
+    private router: Router ) {
+
+    //Formularo reactivo
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+  }
+  ngOnInit(): void {}
+
+  //manear el envio del formulario
+  ngOnSubmit(): void {
+    if (this.loginForm.valid) {
+      const { username, password } = this.loginForm.value;
+
+      this.AuthService.login(username, password).subscribe(
+        (response) => {
+          console.log('Respuesta:', response);
+
+          //si la auteticacion vale, guarda el token y redirige al dashboard
+          localStorage.setItem('token', response.token); //guadar el token en localstorage
+
+          //redirige al dashboard
+          this.router.navigate(['/dashboard']);
+        },
+        (error) => {
+          this.errorMessage = 'Credenciales incorrectas'
+          console.log('Error de autenticación:', error)
+        }
+      );
+    } else {
+      console.log('Formulario no válido');
+    }
+  }
+}
