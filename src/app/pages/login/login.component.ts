@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../core/auth/auth.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit{
 
   errorMessage: string = '';
+  isLoading: boolean = false; //spinner
 
   public loginForm: FormGroup;
 
@@ -33,17 +35,21 @@ export class LoginComponent implements OnInit{
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
 
+      // Mostrar spinner mientras se hace la petición
+      this.isLoading = true;
+
       this.AuthService.login(username, password).subscribe(
         (response) => {
+          this.isLoading = false; // detener spinner
           console.log('Respuesta:', response);
 
           //si la auteticacion vale, guarda el token y redirige al dashboard
           localStorage.setItem('token', response.token); //guadar el token en localstorage
 
-          //redirige al dashboard
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard']); //redirige al dashboard
         },
         (error) => {
+          this.isLoading = false; //detener spinner
           this.errorMessage = 'Credenciales incorrectas'
           console.log('Error de autenticación:', error)
         }
@@ -52,4 +58,9 @@ export class LoginComponent implements OnInit{
       console.log('Formulario no válido');
     }
   }
+
+
+
+  // SPINNER
+
 }

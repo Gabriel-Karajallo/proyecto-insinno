@@ -1,42 +1,60 @@
+
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 22px;
   height: 100vh;
+
 }
 .form{
   padding: 22px;
 }
 .login-card {
   max-width: 400px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-  background-color: rgb(255, 255, 255);
-  border-radius: 5px;
+  box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   padding: 15px;
+  background-color: white;
 }
 .full-width {
   width: 100%;
-  background-color: white;
-
 }
 
+
 /* enlace de registrarse */
+p{
+  font-size: 15px;
+}
 .parrafo p a{
-  color: rgb(255, 99, 19);;
+  color: rgb(62, 19, 255);
 }
 /* titulo */
 .chela-one-regular {
   font-family: "Chela One", system-ui;
   font-weight: 400;
   font-style: normal;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 0px;
 }
 /* error */
 #error{
   text-align: center;
   color: red;
-  margin-top: 8px;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+/* spinner */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
 }
 

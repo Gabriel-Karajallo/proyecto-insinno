@@ -3,15 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environments } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private Url = 'https://backend.com/auth/login';
+  private Url = environments.baseUrl;
   private readonly TOKEN_KEY = 'auth_token';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   //autenticación
   login(username: string, password: string): Observable<any> {
@@ -20,6 +21,7 @@ export class AuthService {
       password
     };
 
+    //TODO: CORREGIR EL ENVÍO AL BACKEND
     return this.http.post<any>(this.Url, body).pipe(
       catchError((error) => {
         console.error('Error de autenticación', error);

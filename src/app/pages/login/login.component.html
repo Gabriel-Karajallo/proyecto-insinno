@@ -8,7 +8,7 @@
 
       <form class="form" [formGroup]="loginForm" (ngSubmit)="ngOnSubmit()">
 
-        <mat-form-field id="input" class="full-width mt-2 mb-2">
+        <mat-form-field class="full-width mt-2 mb-2 input">
           <mat-label>Usuario</mat-label>
           <input matInput formControlName="username" type="text"/>
           <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
@@ -16,7 +16,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field id="input" class="full-width mb-2">
+        <mat-form-field class="full-width mb-2 input">
           <mat-label>Contraseña</mat-label>
           <input matInput formControlName="password" type="password"/>
           <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
@@ -31,6 +31,11 @@
 
         <div class="mt-2" id="error" *ngIf="errorMessage" class="error-message">
           {{ errorMessage }}
+        </div>
+
+        <div *ngIf="isLoading" class="spinner-container">
+          <!-- Spinner de carga -->
+          <mat-spinner diameter="30"></mat-spinner>
         </div>
 
         <div class="text-center m-3">
