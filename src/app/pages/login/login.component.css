@@ -5,7 +5,9 @@
   padding: 22px;
   height: 100vh;
 }
-
+.form{
+  padding: 22px;
+}
 .login-card {
   max-width: 400px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
@@ -13,21 +15,24 @@
   border-radius: 5px;
   padding: 15px;
 }
- img{
-  width: 150px;
-  margin-top:10px
-
-}
 .full-width {
   width: 100%;
+  background-color: white;
+
 }
 
+/* enlace de registrarse */
 .parrafo p a{
   color: rgb(255, 99, 19);;
 }
-
-
-
+/* titulo */
+.chela-one-regular {
+  font-family: "Chela One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
 /* error */
 #error{
   text-align: center;

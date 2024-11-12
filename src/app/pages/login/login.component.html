@@ -1,14 +1,14 @@
 <div class="login-container">
   <mat-card class="login-card">
     <div class="text-center">
-      <img src="./assets/user.png" alt="Logo" class="">
+      <h3 class="chela-one-regular">Login</h3>
     </div>
 
     <mat-card-content>
 
-      <form class="p-4" [formGroup]="loginForm" (ngSubmit)="ngOnSubmit()">
+      <form class="form" [formGroup]="loginForm" (ngSubmit)="ngOnSubmit()">
 
-        <mat-form-field class="full-width mt-2 mb-2">
+        <mat-form-field id="input" class="full-width mt-2 mb-2">
           <mat-label>Usuario</mat-label>
           <input matInput formControlName="username" type="text"/>
           <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
@@ -16,7 +16,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field  class="full-width mb-2">
+        <mat-form-field id="input" class="full-width mb-2">
           <mat-label>Contraseña</mat-label>
           <input matInput formControlName="password" type="password"/>
           <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
