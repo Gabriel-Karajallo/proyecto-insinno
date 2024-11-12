@@ -4,8 +4,6 @@
   justify-content: center;
   align-items: center;
   padding: 22px;
-  height: 100vh;
-
 }
 .form{
   padding: 22px;
@@ -21,7 +19,6 @@
   width: 100%;
 }
 
-
 /* enlace de registrarse */
 p{
   font-size: 15px;
@@ -30,18 +27,21 @@ p{
   color: rgb(62, 19, 255);
 }
 /* titulo */
-.chela-one-regular {
-  font-family: "Chela One", system-ui;
-  font-weight: 400;
+.figtree {
+  font-family: "Figtree", sans-serif;
+  font-optical-sizing: auto;
   font-style: normal;
-  margin-top: 30px;
-  margin-bottom: 0px;
+  margin-top: 15px;
+}
+
+img{
+  width: 50px;
+  margin-top: 25px;
 }
 /* error */
 #error{
   text-align: center;
-  color: red;
-  margin-top: 5px;
+  color: rgb(160, 13, 13);
   font-size: 15px;
 }
 
@@ -50,11 +50,53 @@ p{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
 }
 
 .error-message {
   color: red;
-  margin-top: 10px;
 }
 
+/* icon user */
+.user-1 {
+  animation: user-1 1s cubic-bezier(0.83, -0.07, 0, 1.04) both infinite alternate-reverse;
+}
+@keyframes user-1 {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    transform: translateY(-1px) translateX(-2px);
+  }
+}
+
+/* eye-icon */
+.eye-1 {
+  animation: eye 2.4s infinite;
+}
+.eye-2 {
+  animation: squeeze 2.4s infinite;
+}
+@keyframes eye {
+  90% {
+    transform: none;
+    animation-timing-function: ease-in;
+  }
+  93% {
+    transform: translateY(15px) scaleY(0)
+  }
+  100% {
+    animation-timing-function: ease-out;
+  }
+}
+@keyframes squeeze {
+  90% {
+    transform: none;
+    animation-timing-function: ease-in;
+  }
+  93% {
+    transform: translateY(3px) scaleY(0.8)
+  }
+  100% {
+    animation-timing-function: ease-out;
+  }
+}

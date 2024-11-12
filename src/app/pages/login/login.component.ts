@@ -29,8 +29,7 @@ export class LoginComponent implements OnInit{
     });
   }
   ngOnInit(): void {}
-
-  //manear el envio del formulario
+  //manejar el envio del formulario
   ngOnSubmit(): void {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;

@@ -39,7 +39,7 @@ export class AuthService {
     return this.getToken() !== null;
   }
 
-  // Método para cerrar sesión
+  //
 
 
 }
