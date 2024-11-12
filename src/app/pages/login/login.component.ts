@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit{
 
   errorMessage: string = '';
   isLoading: boolean = false; //spinner
+  hidePassword: boolean = true; // true para ocultar la con
 
   public loginForm: FormGroup;
 
@@ -59,7 +60,5 @@ export class LoginComponent implements OnInit{
   }
 
 
-
-  // SPINNER
 
 }
