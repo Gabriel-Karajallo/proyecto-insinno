@@ -10,6 +10,7 @@ import { AuthService } from '../../core/auth/auth.service';
 })
 export class RegisterComponent implements OnInit{
   public registerForm!: FormGroup;
+  isLoading: boolean = true; //spinner de carga
 
   constructor(
     private fb: FormBuilder,
@@ -27,6 +28,11 @@ export class RegisterComponent implements OnInit{
       },
       { validators: this.passwordMatchValidator }
     );
+
+    // spinner durante unos segundos
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
   }
 
   // Validador personalizado para comprobar que las contraseñas coinciden

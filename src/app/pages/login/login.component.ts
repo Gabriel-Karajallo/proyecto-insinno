@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit{
 
   public loginForm: FormGroup;
 
+
   //formulario y validaciones
   constructor(
     private fb: FormBuilder,
