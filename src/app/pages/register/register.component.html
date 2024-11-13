@@ -1,1 +1,28 @@
-<p>register Works!</p>
+<div class="register-container">
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="register-form">
+
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" placeholder="Enter your username" required />
+      <mat-error *ngIf="registerForm.get('username')?.hasError('required')">Username is required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password" placeholder="Enter your password" required />
+      <mat-error *ngIf="registerForm.get('password')?.hasError('required')">Password is required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Confirm Password</mat-label>
+      <input type="password" matInput formControlName="confirmPassword" placeholder="Confirm your password" required />
+      <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required')">Confirm password is required.</mat-error>
+      <mat-error *ngIf="registerForm.hasError('passwordMismatch')">Passwords do not match.</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="rememberMe">Remember me</mat-checkbox>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+</div>
+

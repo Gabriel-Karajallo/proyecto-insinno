@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
   padding: 22px;
 }
 .form{
@@ -10,10 +11,10 @@
 }
 .login-card {
   max-width: 400px;
-  box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
+  border-radius:20px;
   padding: 15px;
-  background-color: white;
+  background-color: #e0e2ec;
 }
 .full-width {
   width: 100%;
@@ -22,9 +23,13 @@
 /* enlace de registrarse */
 p{
   font-size: 15px;
+  font-family: "Figtree", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin-top: 15px;
 }
 .parrafo p a{
-  color: rgb(62, 19, 255);
+  color: rgb(49, 19, 183);
 }
 /* titulo */
 .figtree {
@@ -38,7 +43,6 @@ img{
   width: 50px;
   margin-top: 25px;
 }
-
 
 
 /* error */

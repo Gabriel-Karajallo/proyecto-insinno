@@ -12,7 +12,9 @@ export class AuthService {
   private Url = environments.baseUrl;
   private readonly TOKEN_KEY = 'auth_token';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router) {}
 
   //autenticación
   login(username: string, password: string): Observable<any> {
@@ -39,7 +41,17 @@ export class AuthService {
     return this.getToken() !== null;
   }
 
-  //
+  // Método para registrar un nuevo usuario
+  register(username: string, password: string, rememberMe: boolean): Observable<any> {
+    const payload = {
+      username,
+      password,
+      rememberMe
+    };
+
+    return this.http.post(`${this.Url}/register`, payload); // Realiza una llamada POST al backend.
+  }
+
 
 
 }
