@@ -5,4 +5,9 @@ h4{
   color: rgb(96, 96, 255);
   margin-top: 20%;
   padding: 10px;
+
+
+  font-family: "Figtree", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }

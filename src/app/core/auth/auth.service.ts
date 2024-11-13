@@ -24,7 +24,7 @@ export class AuthService {
     };
 
     //TODO: CORREGIR EL ENVÍO AL BACKEND
-    return this.http.post<any>(this.Url, body).pipe(
+    return this.http.post<any>(this.Url,body).pipe(
       catchError((error) => {
         console.error('Error de autenticación', error);
         throw error;
