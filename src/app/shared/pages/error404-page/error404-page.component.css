@@ -1,0 +1,8 @@
+h4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(96, 96, 255);
+  margin-top: 20%;
+  padding: 10px;
+}
