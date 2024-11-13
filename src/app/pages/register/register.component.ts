@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit{
       this.isLoading = false;
     }, 2000);
   }
-
   // Validador personalizado para comprobar que las contraseñas coinciden
   passwordMatchValidator(control: FormGroup): { [s: string]: boolean } | null {
     if (control.get('password')?.value !== control.get('confirmPassword')?.value) {
@@ -42,11 +41,10 @@ export class RegisterComponent implements OnInit{
     }
     return null;
   }
-   // Lógica para enviar los datos del formulario de registro
+   // envía los datos del formulario de registro
    onRegister(): void {
     if (this.registerForm.valid) {
       const { username, password, rememberMe } = this.registerForm.value;
-
       // Aquí se llamaría al servicio de autenticación para registrar al usuario
       this.authService.register(username, password, rememberMe).subscribe(
         (response) => {
