@@ -2,11 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.css',
+  animations: [
+    trigger('zoomInAnimation', [
+      transition(':enter', [ // Animación cuando el elemento entra al DOM
+        style({ transform: 'scale(0)', opacity: 0 }), // Estado inicial
+        animate('300ms ease-out', style({ transform: 'scale(1)', opacity: 1 })) // Estado final
+      ]),
+    ])
+  ]
 })
 export class RegisterComponent implements OnInit{
   public registerForm!: FormGroup;

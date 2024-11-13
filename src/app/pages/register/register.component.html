@@ -1,8 +1,8 @@
-<div *ngIf="isLoading" class="spinner-container">
+<div *ngIf="isLoading"  class="spinner-container">
   <mat-spinner diameter="25"></mat-spinner>
 </div>
 
-<div *ngIf="!isLoading" class="register-container">
+<div *ngIf="!isLoading" class="register-container"  [@zoomInAnimation]>
   <mat-card class="register-card">
     <div class="text-center">
       <img src="./assets/logo.png" alt="">
