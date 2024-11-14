@@ -52,9 +52,9 @@ export class LoginComponent implements OnInit{
 
       this.AuthService.login(username, password).subscribe(
         (response) => {
-          this.isLoading = false;
-          this.AuthService.saveToken(response.token); // detener spinner
-          console.log('Respuesta:', response);//guadar el token en localstorage
+          this.isLoading = false;// detener spinner
+          this.AuthService.saveToken(response.token); //guadar el token en localstorage
+          console.log('Respuesta:', response);
 
           //si la auteticacion vale, guarda el token y redirige al dashboard
           this.router.navigate(['/dashboard']); //redirige al dashboard

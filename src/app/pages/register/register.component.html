@@ -56,6 +56,12 @@
 
         <mat-checkbox formControlName="rememberMe"><p>Recordar contraseña</p></mat-checkbox>
 
+
+        <!-- Spinner de carga -->
+        <div *ngIf="loadRegister" class="loadRegister">
+          <mat-spinner diameter="25"></mat-spinner>
+        </div>
+
         <div class="text-center m-3">
         <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Registrarse</button>
         </div>

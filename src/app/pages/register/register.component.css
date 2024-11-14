@@ -61,6 +61,13 @@ mat-label{
   height: 100vh;
 }
 
+.loadRegister{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 
 /* icon user */

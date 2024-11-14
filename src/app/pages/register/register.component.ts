@@ -20,6 +20,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class RegisterComponent implements OnInit{
   public registerForm!: FormGroup;
   isLoading: boolean = true; //spinner de carga
+  loadRegister: boolean = false; //spinner de registro
 
   constructor(
     private fb: FormBuilder,
@@ -70,14 +71,17 @@ export class RegisterComponent implements OnInit{
     if (this.registerForm.valid) {
       const { username, password, rememberMe } = this.registerForm.value;
 
+      this.loadRegister = true; //mostrar el spinner mientras se hace la peticion
       // Aquí se llamaría al servicio de autenticación para registrar al usuario
       this.authService.register(username, password, rememberMe).subscribe(
         (response) => {
+          this.loadRegister = false;
           console.log('Registro exitoso:', response);
           // Puedes redirigir al login o al dashboard si lo prefieres
           this.router.navigate(['/login']);
         },
         (error) => {
+          this.loadRegister = false;
           console.error('Error en el registro:', error);
         }
       );
@@ -85,6 +89,4 @@ export class RegisterComponent implements OnInit{
       console.log('Formulario no válido');
     }
   }
-
-
 }
