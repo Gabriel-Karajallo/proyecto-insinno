@@ -41,19 +41,35 @@ export class RegisterComponent implements OnInit{
     // spinner durante unos segundos
     setTimeout(() => {
       this.isLoading = false;
-    }, 2000);
+    }, 1000);
   }
-  // Validador personalizado para comprobar que las contraseñas coinciden
+  // Validador para comprobar que las contraseñas coinciden
   passwordMatchValidator(control: FormGroup): { [s: string]: boolean } | null {
-    if (control.get('password')?.value !== control.get('confirmPassword')?.value) {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+
+    //verificamos si los dos controles existen
+    if ( !password || !confirmPassword ){
+      return null;
+    }
+
+    //si las contraseñas no coincden
+    if (password.value !== confirmPassword.value) {
+      // Establece un error en `confirmPassword`
+      confirmPassword.setErrors({ passwordMismatch: true });
       return { passwordMismatch: true };
     }
+    // Si coinciden, limpiamos cualquier error previo
+    confirmPassword.setErrors(null);
     return null;
   }
+
+
    // envía los datos del formulario de registro
    onRegister(): void {
     if (this.registerForm.valid) {
       const { username, password, rememberMe } = this.registerForm.value;
+
       // Aquí se llamaría al servicio de autenticación para registrar al usuario
       this.authService.register(username, password, rememberMe).subscribe(
         (response) => {

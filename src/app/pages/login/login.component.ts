@@ -2,18 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../core/auth/auth.service';
 import { Router } from '@angular/router';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
+  animations: [
+    trigger('zoomInAnimation', [
+      transition(':enter', [ // Animación cuando el elemento entra al DOM
+        style({ transform: 'scale(0)', opacity: 0 }), // Estado inicial
+        animate('300ms ease-out', style({ transform: 'scale(1)', opacity: 1 })) // Estado final
+      ]),
+    ])
+  ]
 })
+
 export class LoginComponent implements OnInit{
 
   errorMessage: string = '';
   isLoading: boolean = false; //spinner
-  hidePassword: boolean = true; // true para ocultar la con
+
 
   public loginForm: FormGroup;
 
@@ -31,6 +41,7 @@ export class LoginComponent implements OnInit{
     });
   }
   ngOnInit(): void {}
+
   //manejar el envio del formulario
   ngOnSubmit(): void {
     if (this.loginForm.valid) {
@@ -51,7 +62,7 @@ export class LoginComponent implements OnInit{
         },
         (error) => {
           this.isLoading = false; //detener spinner
-          this.errorMessage = 'Credenciales incorrectas'
+          this.errorMessage = 'Usuario o contraseña incorrectos'
           console.log('Error de autenticación:', error)
         }
       );
@@ -59,7 +70,4 @@ export class LoginComponent implements OnInit{
       console.log('Formulario no válido');
     }
   }
-
-
-
 }

@@ -10,7 +10,7 @@ import { environments } from '../../environment/environment';
 })
 export class AuthService {
   private Url = environments.baseUrl;
-  private readonly TOKEN_KEY = 'auth_token';
+  private  TOKEN_KEY = 'auth_token';
 
   constructor(
     private http: HttpClient,
@@ -32,10 +32,12 @@ export class AuthService {
     )
   }
 
+  //TODO: REVISAR
   //obtener el token desde el almacenamiento
   getToken(): string | null {
     return localStorage.getItem(this.TOKEN_KEY);// Elimina el token del localStorage
   }
+
   // Verificar si el usuario está autenticado
   isAuthenticated(): boolean {
     return this.getToken() !== null;
@@ -51,7 +53,4 @@ export class AuthService {
 
     return this.http.post(`${this.Url}/register`, payload); // Realiza una llamada POST al backend.
   }
-
-
-
 }
