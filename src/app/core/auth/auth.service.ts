@@ -3,18 +3,19 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { environments } from '../../environment/environment';
+import { AbstractWebService } from '../services/abstract-web.service';
+import { PersistenceService } from '../services/persistence.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private Url = environments.baseUrl;
-  private  TOKEN_KEY = 'auth_token';
 
   constructor(
     private http: HttpClient,
-    private router: Router) {}
+    private router: Router,
+    private AbstractWebService: AbstractWebService,
+    private persistenceService: PersistenceService){}
 
   //autenticación
   login(username: string, password: string): Observable<any> {
@@ -22,9 +23,7 @@ export class AuthService {
       username,
       password
     };
-
-    //TODO: CORREGIR EL ENVÍO AL BACKEND
-    return this.http.post<any>(this.Url,body).pipe(
+    return this.AbstractWebService.post('/login', { body }).pipe(
       catchError((error) => {
         console.error('Error de autenticación', error);
         throw error;
@@ -32,10 +31,14 @@ export class AuthService {
     )
   }
 
-  //TODO: REVISAR
-  //obtener el token desde el almacenamiento
+  //guardar el token en el almacenamiento
+  saveToken( token: string ): void{
+    this.persistenceService.saveToLocalStorage('token', token)
+  }
+
+  //obtener el token
   getToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY);// Elimina el token del localStorage
+    return this.persistenceService.getFromLocalStorage('token');
   }
 
   // Verificar si el usuario está autenticado
@@ -51,6 +54,6 @@ export class AuthService {
       rememberMe
     };
 
-    return this.http.post(`${this.Url}/register`, payload); // Realiza una llamada POST al backend.
+    return this.AbstractWebService.post('/register', { payload }); // Realiza una llamada POST al backend.
   }
 }
