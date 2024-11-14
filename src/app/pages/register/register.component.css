@@ -68,6 +68,15 @@ mat-label{
   align-items: center;
 }
 
+/* error */
+#error{
+  text-align: center;
+  color: rgb(160, 13, 13);
+  font-size: 15px;
+  font-family: "Figtree", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
 
 
 /* icon user */

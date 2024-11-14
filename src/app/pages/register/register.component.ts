@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit{
   public registerForm!: FormGroup;
   isLoading: boolean = true; //spinner de carga
   loadRegister: boolean = false; //spinner de registro
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -84,16 +85,26 @@ export class RegisterComponent implements OnInit{
           this.snackBar.open('Usuario registrado con éxito', 'Cerrar', {
             duration: 3000,
           });
+
+          //limpiar los campos del formulario
+          this.registerForm.reset({
+            username: '',
+            password: '',
+            confirmPassword: '',
+          });
+
           // redirigir al login
           this.router.navigate(['/login']);
         },
         (error) => {
           this.loadRegister = false;
+          this.errorMessage = 'Ha ocurrido un error. Intentalo de nuevo'
           console.error('Error en el registro:', error);
         }
       );
     } else {
       console.log('Formulario no válido');
-    }
+    };
+
   }
 }

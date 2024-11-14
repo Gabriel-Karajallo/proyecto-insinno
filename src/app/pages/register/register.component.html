@@ -54,12 +54,17 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-checkbox formControlName="rememberMe"><p>Recordar contraseña</p></mat-checkbox>
+        <!-- <mat-checkbox formControlName="rememberMe"><p>Recordar contraseña</p></mat-checkbox> -->
 
 
         <!-- Spinner de carga -->
         <div *ngIf="loadRegister" class="loadRegister">
           <mat-spinner diameter="25"></mat-spinner>
+        </div>
+
+        <!-- mensaje de error -->
+        <div id="error" *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
         </div>
 
         <div class="text-center m-3">
