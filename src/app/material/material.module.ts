@@ -35,6 +35,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatSnackBarModule,
     MatToolbarModule,
     MatCheckboxModule,
+    MatSnackBarModule
 
   ]
 })

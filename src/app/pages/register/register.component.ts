@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,8 @@ export class RegisterComponent implements OnInit{
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -77,7 +79,12 @@ export class RegisterComponent implements OnInit{
         (response) => {
           this.loadRegister = false;
           console.log('Registro exitoso:', response);
-          // Puedes redirigir al login o al dashboard si lo prefieres
+
+          //mensaje de registro exitoso en pantalla
+          this.snackBar.open('Usuario registrado con éxito', 'Cerrar', {
+            duration: 3000,
+          });
+          // redirigir al login
           this.router.navigate(['/login']);
         },
         (error) => {
