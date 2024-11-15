@@ -47,11 +47,10 @@ export class AuthService {
   }
 
   // Método para registrar un nuevo usuario
-  register(username: string, password: string, rememberMe: boolean): Observable<any> {
+  register(username: string, password: string): Observable<any> {
     const payload = {
       username,
       password,
-      rememberMe
     };
 
     return this.AbstractWebService.post('/register', { payload }); // Realiza una llamada POST al backend.

@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit{
   isLoading: boolean = true; //spinner de carga
   loadRegister: boolean = false; //spinner de registro
   errorMessage: string = '';
+  showPassword: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -37,7 +38,7 @@ export class RegisterComponent implements OnInit{
         username: ['', [Validators.required]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required]],
-        rememberMe: [false]
+
       },
       { validators: this.passwordMatchValidator }
     );
@@ -72,11 +73,11 @@ export class RegisterComponent implements OnInit{
    // envía los datos del formulario de registro
    onRegister(): void {
     if (this.registerForm.valid) {
-      const { username, password, rememberMe } = this.registerForm.value;
+      const { username, password } = this.registerForm.value;
 
       this.loadRegister = true; //mostrar el spinner mientras se hace la peticion
       // Aquí se llamaría al servicio de autenticación para registrar al usuario
-      this.authService.register(username, password, rememberMe).subscribe(
+      this.authService.register(username, password).subscribe(
         (response) => {
           this.loadRegister = false;
           console.log('Registro exitoso:', response);
@@ -106,5 +107,9 @@ export class RegisterComponent implements OnInit{
       console.log('Formulario no válido');
     };
 
+  }
+
+  toggleShowPassword( event: any ): void{
+    this.showPassword = event.checked;
   }
 }
