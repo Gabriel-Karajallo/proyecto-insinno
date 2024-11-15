@@ -71,6 +71,9 @@ mat-label{
   align-items: center;
 }
 
+.iniciar-sesion{
+  color: #1770a8;
+}
 /* error */
 #error{
   text-align: center;
