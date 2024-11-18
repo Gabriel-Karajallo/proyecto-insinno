@@ -40,7 +40,12 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     AppRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+
+
+    //
+
+
   ],
 
   providers: [

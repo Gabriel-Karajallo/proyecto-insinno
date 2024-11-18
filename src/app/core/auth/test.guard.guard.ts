@@ -8,7 +8,7 @@ export const testGuardGuard: CanActivateFn = (route, state) => {
   const router = inject(Router); //en caso de que no se autentique poder redirigir
 
 
-  if (authService.getToken()) {
+  if (authService.isAuthenticated()) {
     return true;  // Permite el acceso si está autenticado
   } else {
     router.navigate(['/login']);

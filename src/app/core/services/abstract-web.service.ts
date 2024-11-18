@@ -10,12 +10,12 @@ export class AbstractWebService {
 
   constructor(protected http: HttpClient) {}
 
-  // peticiones POST
+  // peticion POST
   post<T>(url: string, body: any): Observable<T> {
     return this.http.post<T>(`${environments.baseUrl}${url}`, body);
   }
 
-  // peticiones GET
+  // peticion GET
   get<T>(url: string): Observable<T> {
     return this.http.get<T>(`${environments.baseUrl}${url}`);
   }

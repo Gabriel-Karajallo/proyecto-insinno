@@ -46,7 +46,7 @@ export class AuthService {
     return this.getToken() !== null;
   }
 
-  // Método para registrar un nuevo usuario
+  // registrar un nuevo usuario
   register(username: string, password: string): Observable<any> {
     const payload = {
       username,
