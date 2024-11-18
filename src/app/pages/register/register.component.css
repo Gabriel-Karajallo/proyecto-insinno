@@ -27,6 +27,12 @@ img{
 }
 
 /* fuentes */
+mat-checkbox span {
+  font-family: "Figtree", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 15px;
+}
 .figtree {
   font-family: "Figtree", sans-serif;
   font-optical-sizing: auto;
