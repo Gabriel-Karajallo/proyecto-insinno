@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { zoomInAnimation } from '../../shared/animations/animations';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,9 +17,7 @@ export class LoginComponent implements OnInit{
   errorMessage: string = '';
   isLoading: boolean = false; //spinner
 
-
   public loginForm: FormGroup;
-
 
   //formulario y validaciones
   constructor(

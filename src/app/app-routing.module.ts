@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ProductsComponent } from './pages/products/products.component';
+import { ProductsComponent } from './pages/dashboard/components/products/products.component';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
 import { testGuardGuard } from './core/auth/test.guard.guard';
 
@@ -20,7 +20,12 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '404', component: Error404PageComponent },
   { path:'**', redirectTo: '404', pathMatch:'full' },
-];
+
+  {
+      path: 'dashboard', // Ruta principal del dashboard
+      loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
