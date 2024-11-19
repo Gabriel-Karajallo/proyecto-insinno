@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { zoomInAnimation } from '../../shared/animations/animations';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,12 +29,12 @@ export class LoginComponent implements OnInit{
     //Formularo reactivo
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
   ngOnInit(): void {
     // Verifica si hay un token guardado. Si existe, redirige al dashboard.
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('token');
     if (token) {
       this.router.navigate(['/dashboard']); // Redirige automáticamente al dashboard si ya hay un token.
     }
