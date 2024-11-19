@@ -1,3 +1,3 @@
 export const environments = {
-  baseUrl: 'localhost:8080/holaseg'
+  baseUrl: 'http://192.168.1.191:8080'
 }

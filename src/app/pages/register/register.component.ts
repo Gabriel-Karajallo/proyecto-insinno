@@ -4,19 +4,13 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { zoomInAnimation } from '../../shared/animations/animations';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
-  animations: [
-    trigger('zoomInAnimation', [
-      transition(':enter', [ // Animación cuando el elemento entra al DOM
-        style({ transform: 'scale(0)', opacity: 0 }), // Estado inicial
-        animate('300ms ease-out', style({ transform: 'scale(1)', opacity: 1 })) // Estado final
-      ]),
-    ])
-  ]
+  animations: [zoomInAnimation]
 })
 export class RegisterComponent implements OnInit{
   public registerForm!: FormGroup;

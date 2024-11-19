@@ -19,11 +19,9 @@ export class AuthService {
 
   //autenticación
   login(username: string, password: string): Observable<any> {
-    const body = {
-      username,
-      password
-    };
-    return this.AbstractWebService.post('/login', { body }).pipe(
+    const body = { username, password };
+
+    return this.AbstractWebService.post('/auth/login', body ).pipe(
       catchError((error) => {
         console.error('Error de autenticación', error);
         throw error;
@@ -54,5 +52,12 @@ export class AuthService {
     };
 
     return this.AbstractWebService.post('/register', { payload }); // Realiza una llamada POST al backend.
+  }
+
+  logout(): void {
+    console.log('Eliminando token del localStorage');
+    localStorage.removeItem('token');  // Elimina el token
+    localStorage.removeItem('refreshToken'); // Si tienes refresh token
+    this.router.navigate(['/login']); // Redirige a la página de login
   }
 }

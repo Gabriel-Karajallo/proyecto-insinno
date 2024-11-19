@@ -3,20 +3,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../core/auth/auth.service';
 import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { zoomInAnimation } from '../../shared/animations/animations';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
-  animations: [
-    trigger('zoomInAnimation', [
-      transition(':enter', [ // Animación cuando el elemento entra al DOM
-        style({ transform: 'scale(0)', opacity: 0 }), // Estado inicial
-        animate('300ms ease-out', style({ transform: 'scale(1)', opacity: 1 })) // Estado final
-      ]),
-    ])
-  ]
+  animations: [zoomInAnimation]
 })
 
 export class LoginComponent implements OnInit{
@@ -37,15 +31,25 @@ export class LoginComponent implements OnInit{
     //Formularo reactivo
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required]]
     });
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Verifica si hay un token guardado. Si existe, redirige al dashboard.
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      this.router.navigate(['/dashboard']); // Redirige automáticamente al dashboard si ya hay un token.
+    }
+  }
 
   //manejar el envio del formulario
   ngOnSubmit(): void {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
+
+      // Elimina el token anterior si existe antes de hacer el login
+      localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
 
       // Mostrar spinner mientras se hace la petición
       this.isLoading = true;
@@ -68,5 +72,6 @@ export class LoginComponent implements OnInit{
     } else {
       console.log('Formulario no válido');
     }
+
   }
 }
