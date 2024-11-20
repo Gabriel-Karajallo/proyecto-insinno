@@ -42,7 +42,7 @@ export class AuthService {
       password,
     };
 
-    return this.AbstractWebService.post('/register', { payload }); // Realiza una llamada POST al backend.
+    return this.AbstractWebService.postRegister('/api/users/register',  payload ); // Realiza una llamada POST al backend.
   }
 
   logout(): void {

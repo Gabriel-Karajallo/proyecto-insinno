@@ -10,8 +10,12 @@ export class AbstractWebService {
 
   constructor(protected http: HttpClient) {}
 
-  // peticion POST
+  // peticion POST login
   post<T>(url: string, body: any): Observable<T> {
+    return this.http.post<T>(`${environments.baseUrl}${url}`, body);
+  }
+  // peticion POST register
+  postRegister<T>(url: string, body: any): Observable<T> {
     return this.http.post<T>(`${environments.baseUrl}${url}`, body);
   }
 
