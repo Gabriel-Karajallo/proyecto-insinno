@@ -20,6 +20,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { DropdownModule } from 'primeng/dropdown';
+import { PersistenceService } from './core/services/persistence.service';
 
 
 @NgModule({
@@ -41,6 +42,8 @@ import { DropdownModule } from 'primeng/dropdown';
     ReactiveFormsModule,
     FormsModule,
     DashboardModule,
+  ],
+  exports:[
   ],
 
   providers: [

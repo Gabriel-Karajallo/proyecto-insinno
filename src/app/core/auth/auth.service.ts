@@ -29,21 +29,6 @@ export class AuthService {
     )
   }
 
-  //guardar el token en el almacenamiento
-  saveToken( token: string ): void{
-    this.persistenceService.saveToLocalStorage('token', token)
-  }
-
-  //obtener el token
-  getToken(): string | null {
-    return this.persistenceService.getFromLocalStorage('token');
-  }
-
-  // Verificar si el usuario está autenticado
-  isAuthenticated(): boolean {
-    return this.getToken() !== null;
-  }
-
   // registrar un nuevo usuario
   register(username: string, password: string): Observable<any> {
     const payload = {
@@ -56,8 +41,8 @@ export class AuthService {
 
   logout(): void {
     console.log('Eliminando token del localStorage');
-    localStorage.removeItem('token');  // Elimina el token
-    localStorage.removeItem('refreshToken'); // Si tienes refresh token
+    this.persistenceService.removeFromLocalStorage('token');  // Elimina el token
+    this.persistenceService.removeFromLocalStorage('refreshToken'); // Si tienes refresh token
     this.router.navigate(['/login']); // Redirige a la página de login
   }
 }

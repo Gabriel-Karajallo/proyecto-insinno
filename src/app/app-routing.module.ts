@@ -13,6 +13,7 @@ const routes: Routes = [
   {
     path: 'dashboard', component: DashboardComponent,
     canActivate: [testGuardGuard],
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   { path: 'products', component: ProductsComponent,
     canActivate: [testGuardGuard],
@@ -20,11 +21,6 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '404', component: Error404PageComponent },
   { path:'**', redirectTo: '404', pathMatch:'full' },
-
-  {
-      path: 'dashboard', // Ruta principal del dashboard
-      loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
-  },
 ]
 
 @NgModule({

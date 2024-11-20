@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../core/auth/auth.service';
 import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { zoomInAnimation } from '../../shared/animations/animations';
-
+import { PersistenceService } from '../../core/services/persistence.service';
+import { DataManagementService } from '../../core/services/data-management.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,6 @@ import { zoomInAnimation } from '../../shared/animations/animations';
 })
 
 export class LoginComponent implements OnInit{
-
   errorMessage: string = '';
   isLoading: boolean = false; //spinner
 
@@ -24,14 +24,17 @@ export class LoginComponent implements OnInit{
   constructor(
     private fb: FormBuilder,
     private AuthService: AuthService,
-    private router: Router ) {
+    private router: Router,
+    private PersistenceService: PersistenceService,
+    private DataManagementService: DataManagementService ) {
 
     //Formularo reactivo
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required,]],
     });
   }
+
   ngOnInit(): void {
     // Verifica si hay un token guardado. Si existe, redirige al dashboard.
     const token = localStorage.getItem('token');
@@ -46,8 +49,8 @@ export class LoginComponent implements OnInit{
       const { username, password } = this.loginForm.value;
 
       // Elimina el token anterior si existe antes de hacer el login
-      localStorage.removeItem('token');
-      localStorage.removeItem('refreshToken');
+      this.PersistenceService.removeFromLocalStorage('token')
+      this.PersistenceService.removeFromLocalStorage('refreshToken');
 
       // Mostrar spinner mientras se hace la petición
       this.isLoading = true;
@@ -55,7 +58,7 @@ export class LoginComponent implements OnInit{
       this.AuthService.login(username, password).subscribe(
         (response) => {
           this.isLoading = false;// detener spinner
-          this.AuthService.saveToken(response.token); //guadar el token en localstorage
+          this.DataManagementService.saveToken(response.token); //guadar el token en localstorage
           console.log('Respuesta:', response);
 
           //si la auteticacion vale, guarda el token y redirige al dashboard
