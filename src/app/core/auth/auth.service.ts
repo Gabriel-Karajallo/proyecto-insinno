@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AbstractWebService } from '../services/abstract-web.service';
 import { PersistenceService } from '../services/persistence.service';
+import { DataManagementService } from '../services/data-management.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +16,14 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private AbstractWebService: AbstractWebService,
-    private persistenceService: PersistenceService){}
+    private persistenceService: PersistenceService,
+    private DataManagementService: DataManagementService) { }
 
   //autenticación
   login(username: string, password: string): Observable<any> {
     const body = { username, password };
 
-    return this.AbstractWebService.post('/auth/login', body ).pipe(
+    return this.AbstractWebService.post('/auth/login', body).pipe(
       catchError((error) => {
         console.error('Error de autenticación', error);
         throw error;
@@ -29,6 +31,10 @@ export class AuthService {
     )
   }
 
+  // Verificar si el usuario está autenticado
+  isAuthenticated(): boolean {
+    return this.DataManagementService.getToken() !== null;
+  }
   // registrar un nuevo usuario
   register(username: string, password: string): Observable<any> {
     const payload = {

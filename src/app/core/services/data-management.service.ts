@@ -12,19 +12,13 @@ export class DataManagementService {
     private persistenceService: PersistenceService
   ) { }
 
-//guardar el token en el almacenamiento
-saveToken( token: string ): void{
-  this.persistenceService.saveToLocalStorage('token', token)
-}
+  //guardar el token en el almacenamiento
+  saveToken(token: string): void {
+    this.persistenceService.saveToLocalStorage('token', token)
+  }
 
-//obtener el token
-getToken(): string | null {
-  return this.persistenceService.getFromLocalStorage('token');
-}
-
-// Verificar si el usuario está autenticado
-isAuthenticated(): boolean {
-  return this.getToken() !== null;
-}
-
+  //obtener el token
+  getToken(): string | null {
+    return this.persistenceService.getFromLocalStorage('token');
+  }
 }
