@@ -19,6 +19,7 @@ import { Error404PageComponent } from './shared/pages/error404-page/error404-pag
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
@@ -39,10 +40,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    DashboardModule
-    //
-
-
+    DashboardModule,
   ],
 
   providers: [
