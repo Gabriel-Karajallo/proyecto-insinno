@@ -21,7 +21,8 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { DropdownModule } from 'primeng/dropdown';
 import { PersistenceService } from './core/services/persistence.service';
-
+import { SharedModule } from './shared/shared.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { PersistenceService } from './core/services/persistence.service';
     RegisterComponent,
     HeaderComponent,
     FooterComponent,
-    Error404PageComponent
+    Error404PageComponent,
   ],
 
   imports: [
@@ -42,6 +43,8 @@ import { PersistenceService } from './core/services/persistence.service';
     ReactiveFormsModule,
     FormsModule,
     DashboardModule,
+    SharedModule,
+    MatSnackBarModule
   ],
   exports:[
   ],

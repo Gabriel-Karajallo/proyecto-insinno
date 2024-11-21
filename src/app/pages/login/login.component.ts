@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit{
   errorMessage: string = '';
   isLoading: boolean = false; //spinner
 
+
   public loginForm: FormGroup;
 
   //formulario y validaciones
@@ -30,8 +31,8 @@ export class LoginComponent implements OnInit{
 
     //Formularo reactivo
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required,]],
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 

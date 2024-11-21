@@ -5,9 +5,12 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
+  ],
+  exports:[
   ]
 })
 export class SharedModule { }

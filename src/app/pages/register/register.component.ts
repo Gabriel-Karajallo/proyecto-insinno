@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { zoomInAnimation } from '../../shared/animations/animations';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -18,13 +19,11 @@ export class RegisterComponent implements OnInit {
   errorMessage: string = '';
   showPassword: boolean = false;
 
-  // Control del modal
-  isModalVisible: boolean = false;
-
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -82,8 +81,6 @@ export class RegisterComponent implements OnInit {
     confirmPassword.setErrors(null);
     return null;
   }
-
-
   // envía los datos del formulario de registro
   onRegister(): void {
     if (this.registerForm.valid) {
@@ -96,8 +93,14 @@ export class RegisterComponent implements OnInit {
           this.loadRegister = false;
           console.log('Registro exitoso:', response);
 
-          // Mostrar modal
-          this.isModalVisible = true;
+
+          // Mostrar Snackbar con mensaje de éxito
+          this.snackBar.open('¡Usuario registrado con éxito! Ahora puedes iniciar sesión.', 'X', {
+            duration: 5000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center',
+            panelClass: ['custom-snackbar']
+          });
 
           //limpiar los campos del formulario
           this.registerForm.reset({
@@ -106,6 +109,8 @@ export class RegisterComponent implements OnInit {
             confirmPassword: '',
           });
 
+          // Redirigir al login después de mostrar el mensaje
+          this.router.navigate(['/login']);
 
         },
         (error) => {
@@ -124,13 +129,4 @@ export class RegisterComponent implements OnInit {
     this.showPassword = event.checked;
   }
 
-  // Cerrar el modal
-  closeModal(): void {
-    this.isModalVisible = false;
-  }
-
-  // Redirigir al login
-  goToLogin(): void {
-    this.router.navigate(['/login']);
-  }
 }
