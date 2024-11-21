@@ -15,8 +15,9 @@ import { OrdersComponent } from './components/orders/orders.component';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
-  ]
+    DashboardRoutingModule,
+  ],
+
 
 })
 export class DashboardModule { }
