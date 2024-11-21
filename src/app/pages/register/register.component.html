@@ -4,7 +4,7 @@
     <path stroke="#ffff" stroke-linecap="round" stroke-width="1.5" d="M12 6.864v1.333m0 7.606v1.333M17.136 12h-1.333m-7.606 0H6.864m8.768 3.632l-.943-.943M9.311 9.311l-.943-.943m0 7.264l.943-.943m5.378-5.378l.943-.943" style="animation:loader4 1.5s linear infinite both;transform-origin:center center"/></svg>
 </div>
 
-<div *ngIf="!isLoading" class="register-container"  [@zoomInAnimation]>
+<div *ngIf="!isLoading" class="register-container" [class.blurred]="isModalVisible"  [@zoomInAnimation]>
   <mat-card class="register-card">
     <div class="text-center">
       <img src="./assets/logo.png" alt="">
@@ -39,6 +39,11 @@
           <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
             La contraseña debe tener al menos 6 caracteres.
           </mat-error>
+          <mat-error *ngIf="registerForm.get('password')?.hasError('complexityError')">
+            La contraseña debe incluir al menos una letra mayúscula y un número.
+          </mat-error>
+
+
         </mat-form-field>
 
         <mat-form-field class="example-form-field full-width mt-3 mb-1" hideRequiredMarker>
@@ -77,7 +82,18 @@
         </div>
       </form>
     </mat-card-content>
-
   </mat-card>
+</div>
 
+<!-- Modal -->
+<div class="modal-overlay" *ngIf="isModalVisible">
+  <div class="modal">
+    <button class="close-btn" (click)="closeModal()">X</button>
+    <h3>¡Usuario registrado con éxito!</h3>
+    <p>Puedes iniciar sesión ahora.</p>
+    <div class="modal-actions">
+      <button mat-button color="primary" (click)="goToLogin()">Iniciar Sesión</button>
+      <button mat-button color="warn" (click)="closeModal()">Cerrar</button>
+    </div>
+  </div>
 </div>

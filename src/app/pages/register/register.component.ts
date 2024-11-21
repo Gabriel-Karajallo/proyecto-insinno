@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { zoomInAnimation } from '../../shared/animations/animations';
 
 @Component({
@@ -12,25 +11,31 @@ import { zoomInAnimation } from '../../shared/animations/animations';
   styleUrl: './register.component.css',
   animations: [zoomInAnimation]
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent implements OnInit {
   public registerForm!: FormGroup;
   isLoading: boolean = true; //spinner de carga
   loadRegister: boolean = false; //spinner de registro
   errorMessage: string = '';
   showPassword: boolean = false;
 
+  // Control del modal
+  isModalVisible: boolean = false;
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group(
       {
         username: ['', [Validators.required]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
+        password: ['', [
+          Validators.required,
+          Validators.minLength(6),
+          this.passwordComplexityValidator
+        ]],
         confirmPassword: ['', [Validators.required]],
 
       },
@@ -42,13 +47,28 @@ export class RegisterComponent implements OnInit{
       this.isLoading = false;
     }, 1000);
   }
+
+  // Validador personalizado para la complejidad de la contraseña
+  passwordComplexityValidator(control: AbstractControl): { [key: string]: any } | null {
+    const password = control.value;
+
+    // Expresión regular para al menos 1 mayúscula y 1 número
+    const regex = /^(?=.*[A-Z])(?=.*\d).+$/;
+
+    if (password && !regex.test(password)) {
+      return { complexityError: true }; // Devuelve un error si no cumple
+    }
+    return null; // Válido si cumple
+  }
+
+
   // Validador para comprobar que las contraseñas coinciden
   passwordMatchValidator(control: FormGroup): { [s: string]: boolean } | null {
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
 
     //verificamos si los dos controles existen
-    if ( !password || !confirmPassword ){
+    if (!password || !confirmPassword) {
       return null;
     }
 
@@ -64,8 +84,8 @@ export class RegisterComponent implements OnInit{
   }
 
 
-   // envía los datos del formulario de registro
-   onRegister(): void {
+  // envía los datos del formulario de registro
+  onRegister(): void {
     if (this.registerForm.valid) {
       const { username, password } = this.registerForm.value;
 
@@ -76,10 +96,8 @@ export class RegisterComponent implements OnInit{
           this.loadRegister = false;
           console.log('Registro exitoso:', response);
 
-          //mensaje de registro exitoso en pantalla
-          this.snackBar.open('Usuario registrado con éxito', 'Cerrar', {
-            duration: 3000,
-          });
+          // Mostrar modal
+          this.isModalVisible = true;
 
           //limpiar los campos del formulario
           this.registerForm.reset({
@@ -88,8 +106,7 @@ export class RegisterComponent implements OnInit{
             confirmPassword: '',
           });
 
-          // redirigir al login
-          this.router.navigate(['/login']);
+
         },
         (error) => {
           this.loadRegister = false;
@@ -103,7 +120,17 @@ export class RegisterComponent implements OnInit{
 
   }
 
-  toggleShowPassword( event: any ): void{
+  toggleShowPassword(event: any): void {
     this.showPassword = event.checked;
+  }
+
+  // Cerrar el modal
+  closeModal(): void {
+    this.isModalVisible = false;
+  }
+
+  // Redirigir al login
+  goToLogin(): void {
+    this.router.navigate(['/login']);
   }
 }
