@@ -35,6 +35,8 @@
             </svg>
           </mat-label>
           <input [type]="showPassword ? 'text' : 'password'" matInput formControlName="password" required />
+
+          <!-- ERRORES -->
           <mat-error *ngIf="registerForm.get('password')?.hasError('required')">La contraseña es obligatoria.</mat-error>
           <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
             La contraseña debe tener al menos 6 caracteres.

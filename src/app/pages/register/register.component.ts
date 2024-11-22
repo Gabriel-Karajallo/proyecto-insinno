@@ -115,8 +115,11 @@ export class RegisterComponent implements OnInit {
         },
         (error) => {
           this.loadRegister = false;
-          this.errorMessage = 'Ha ocurrido un error. Intentalo de nuevo'
-          console.error('Error en el registro:', error);
+          if (error.status === 400) {
+            this.errorMessage = 'Ese nombre de usuario ya está registrado';
+        } else {
+            this.errorMessage = 'Error al registrar el usuario. Inténtalo de nuevo más tarde.';
+        }
         }
       );
     } else {
