@@ -5,6 +5,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { ProductsComponent } from './components/products/products.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { OrdersComponent } from './components/orders/orders.component';
     DashboardComponent,
     OrdersComponent,
     ProductsComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,

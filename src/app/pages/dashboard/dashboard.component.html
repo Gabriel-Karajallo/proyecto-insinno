@@ -1,34 +1,13 @@
-<div class="container">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <app-header></app-header>
   <div class="container2 p-2">
     <router-outlet></router-outlet>
+    <button mat-raised-button color="warn" (click)="logout()">Cerrar sesión</button>
   </div>
 
 
 
-  <button mat-raised-button color="warn" (click)="logout()">Cerrar sesión</button>
-</div>
+
+
 
 
 

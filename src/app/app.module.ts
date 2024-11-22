@@ -10,7 +10,6 @@ import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
 
@@ -29,7 +28,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent,
     FooterComponent,
     Error404PageComponent,
   ],
