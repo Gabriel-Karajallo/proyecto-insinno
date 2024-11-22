@@ -11,11 +11,11 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   {
     path: 'dashboard',
-    canActivate: [testGuardGuard],
+    // canActivate: [testGuardGuard],
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   { path: 'products', component: ProductsComponent,
-    canActivate: [testGuardGuard],
+    // canActivate: [testGuardGuard],
    },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '404', component: Error404PageComponent },
