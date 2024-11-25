@@ -1,5 +1,5 @@
 # Proyecto Beca Insinno 
-  - Angular CLI: 18.2.11
+  - Angular CLI: 18.2.11.
   - Node: 20.18.0
 ## Dependencias del proyecto
   - Las principales dependencias instaladas para este proyecto son:
