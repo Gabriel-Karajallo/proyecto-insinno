@@ -14,9 +14,6 @@ const routes: Routes = [
     // canActivate: [testGuardGuard],
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
-  { path: 'products', component: ProductsComponent,
-    // canActivate: [testGuardGuard],
-   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '404', component: Error404PageComponent },
   { path:'**', redirectTo: '404', pathMatch:'full' },

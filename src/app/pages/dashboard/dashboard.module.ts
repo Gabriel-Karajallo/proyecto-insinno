@@ -8,14 +8,9 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-
-
-import { SidebarModule } from 'primeng/sidebar';
-import { ButtonModule } from 'primeng/button';
-import { MenuModule } from 'primeng/menu';
-import { BadgeModule } from 'primeng/badge';
-import { RippleModule } from 'primeng/ripple';
-import { AvatarModule } from 'primeng/avatar';
+import { MaterialModule } from '../../material/material.module';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,20 +18,15 @@ import { AvatarModule } from 'primeng/avatar';
     OrdersComponent,
     ProductsComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule
 
-
-    //PRIME NG MODULES
-    SidebarModule,
-    ButtonModule,
-    MenuModule,
-    BadgeModule,
-    RippleModule,
-    AvatarModule
   ],
 
 

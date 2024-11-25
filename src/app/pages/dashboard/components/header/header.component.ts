@@ -1,54 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { AuthService } from '../../../../core/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
+  styles:`
+    #menu{color: #ffff;};
+  `
 })
-export class HeaderComponent implements OnInit{
-  sidebarVisible: boolean = false;
+export class HeaderComponent {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {}
 
-  items: MenuItem[] | undefined;
+  // Llamada al método logout()
+  logout(): void {
+    this.authService.logout();
+  }
+  public sidebarItems = [
+    { label: 'Conciertos', icon: 'music_note', url: './list' },
+    { label: 'aaaaaaa', icon: 'celebration', url: './new-hero' },
+    { label: 'Contacto', icon: 'call', url: './search' },
+    { label: 'Perfil', icon: 'person', url: './profile' },
+    { label: 'Cerrar sesión', icon: 'logout', action: () => this.logout() }
+  ]
 
- ngOnInit() {
-        this.items = [
-            {
-                separator: true
-            },
-            {
-                label: 'Productos',
-                items: [
-                    {
-                        label: 'Conciertos',
-                        icon: 'pi pi-plus',
-                    },
-                    {
-                        label: 'Festivales',
-                        icon: 'pi pi-search',
-                    },
-                    {
-                      label: 'Contacto',
-                      icon: 'pi pi-search',
-                  }
-                ]
-            },
-            {
-                label: 'Perfil',
-                items: [
-                    {
-                        label: 'Configuración',
-                        icon: 'pi pi-cog',
-                    },
-                    {
-                        label: 'Cerrar sesión',
-                        icon: 'pi pi-sign-out',
-                    }
-                ]
-            },
-            {
-                separator: true
-            }
-        ];
-    }
+  navigateTo(url: string): void {
+    this.router.navigate([url]);
+  }
 }

@@ -1,0 +1,51 @@
+<div class="flex">
+  <div class="flex__item">
+    <h1>CAMBIA TU <br> CONTRASEÑA</h1>
+  </div>
+  <div class="flex__item">
+    <div class="container">
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" placeholder="Ingresa tu nombre" />
+          <mat-error *ngIf="profileForm.get('name')?.hasError('required')">
+            El nombre es obligatorio
+          </mat-error>
+          <mat-error *ngIf="profileForm.get('name')?.hasError('minlength')">
+            El nombre debe tener al menos 3 caracteres
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Ingresa tu email" />
+          <mat-error *ngIf="profileForm.get('email')?.hasError('required')">
+            El email es obligatorio
+          </mat-error>
+          <mat-error *ngIf="profileForm.get('email')?.hasError('email')">
+            Ingresa un email válido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password" placeholder="Ingresa tu contraseña" />
+          <mat-error *ngIf="profileForm.get('password')?.hasError('required')">
+            La contraseña es obligatoria
+          </mat-error>
+          <mat-error *ngIf="profileForm.get('password')?.hasError('minlength')">
+            La contraseña debe tener al menos 6 caracteres
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="profileForm.invalid">
+          Guardar cambios
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+

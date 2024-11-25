@@ -1,15 +1,22 @@
-.logo{
-  width: 30px;
+.toolbar{
+  background-color: #1770a8 !important;
 }
-.prime{
-  padding: 10px;
+.buton-icon{
+  margin-left: auto;
 }
-.p-2 {
-  padding: 0 !important;
+.icon-list{
+  color: #1770a8 !important;
 }
-.user{
+
+.container-title{
+  display: flex;
+  justify-content: center;
+  text-align: center;
   margin-left: 20px;
 }
-.p-avatar{
-  margin-left: 10px;
+.anta-regular {
+  font-family: "Anta", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
 }
