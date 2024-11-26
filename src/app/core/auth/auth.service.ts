@@ -51,4 +51,14 @@ export class AuthService {
     this.persistenceService.removeFromLocalStorage('refreshToken'); // Si tienes refresh token
     this.router.navigate(['/login']); // Redirige a la página de login
   }
+
+  // Eliminar cuenta del usuario
+deleteAccount(userId: string): Observable<any> {
+  return this.AbstractWebService.delete(`/api/users/delete/${userId}`).pipe(
+    catchError((error) => {
+      console.error('Error al eliminar la cuenta:', error);
+      throw error;
+    })
+  );
+}
 }

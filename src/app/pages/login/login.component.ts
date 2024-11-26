@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit{
       this.router.navigate(['/dashboard']); // Redirige automáticamente al dashboard si ya hay un token.
     }
   }
-
   //manejar el envio del formulario
   ngOnSubmit(): void {
     if (this.loginForm.valid) {

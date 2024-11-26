@@ -25,17 +25,14 @@ export class DataManagementService {
     return this.persistenceService.getFromLocalStorage('token');
   }
 
-  //consultar datos de los usuarios registrados
-  getUser(userId: string): Observable<any> {
-    return this.AbstractWebService.get(`/api/users/${userId}`).pipe(
-      catchError(error => {
-          console.error('Error al obtener usuario', error);
-          return throwError(() => new Error('Error al obtener usuario'));
-      })
-  );;
+// Obtener datos del usuario
+getUser(userId: string): Observable<any> {
+  return this.AbstractWebService.get(`/api/users/${userId}`).pipe(
+    catchError((error) => {
+      console.error('Error al obtener datos del usuario:', error);
+      throw error;
+    })
+  );
 }
-  //Para actualizar datos de los usuarios
-  updateUser(userId: string, userData: any): Observable<any> {
-      return this.AbstractWebService.put(`/api/users/${userId}`, userData);
-  }
+
 }

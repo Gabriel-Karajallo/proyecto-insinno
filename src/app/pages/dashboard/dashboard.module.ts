@@ -10,7 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { MaterialModule } from '../../material/material.module';
 import { ProfileComponent } from './components/profile/profile.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     DashboardRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
 
   ],
 

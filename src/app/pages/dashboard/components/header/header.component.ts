@@ -24,7 +24,7 @@ export class HeaderComponent {
     { label: 'Conciertos', icon: 'music_note', url: './list' },
     { label: 'aaaaaaa', icon: 'celebration', url: './new-hero' },
     { label: 'Contacto', icon: 'call', url: './search' },
-    { label: 'Perfil', icon: 'person', url: './profile' },
+    { label: 'Perfil', icon: 'person', url: '/dashboard/profile' },
     { label: 'Cerrar sesión', icon: 'logout', action: () => this.logout() }
   ]
 

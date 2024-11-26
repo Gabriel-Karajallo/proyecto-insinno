@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   {
     path: 'dashboard',
-    // canActivate: [testGuardGuard],
+    canActivate: [testGuardGuard],
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
