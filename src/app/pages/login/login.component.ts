@@ -14,7 +14,7 @@ import { DataManagementService } from '../../core/services/data-management.servi
   animations: [zoomInAnimation]
 })
 
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   errorMessage: string = '';
   isLoading: boolean = false; //spinner
 
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit{
     private AuthService: AuthService,
     private router: Router,
     private PersistenceService: PersistenceService,
-    private DataManagementService: DataManagementService ) {
+    private DataManagementService: DataManagementService) {
 
     //Formularo reactivo
     this.loginForm = this.fb.group({
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     // Verifica si hay un token guardado. Si existe, redirige al dashboard.
-    const token = localStorage.getItem('token');
+    const token = this.PersistenceService.getFromLocalStorage('authToken');
     if (token) {
       this.router.navigate(['/dashboard']); // Redirige automáticamente al dashboard si ya hay un token.
     }
@@ -49,8 +49,8 @@ export class LoginComponent implements OnInit{
       const { username, password } = this.loginForm.value;
 
       // Elimina el token anterior si existe antes de hacer el login
-      this.PersistenceService.removeFromLocalStorage('token')
-      this.PersistenceService.removeFromLocalStorage('refreshToken');
+      this.PersistenceService.removeFromLocalStorage('authToken')
+      this.PersistenceService.removeFromLocalStorage('authToken');
 
       // Mostrar spinner mientras se hace la petición
       this.isLoading = true;
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit{
       this.AuthService.login(username, password).subscribe(
         (response) => {
           this.isLoading = false;// detener spinner
-          this.DataManagementService.saveToken(response.token); //guadar el token en localstorage
+          this.PersistenceService.getFromLocalStorage(response.token); //guadar el token en localstorage
           console.log('Respuesta:', response);
 
           //si la auteticacion vale, guarda el token y redirige al dashboard

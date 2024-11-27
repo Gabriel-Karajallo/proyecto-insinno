@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AbstractWebService {
 
-  constructor(protected http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // peticion POST login
   post<T>(url: string, body: any): Observable<T> {

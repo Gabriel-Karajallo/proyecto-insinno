@@ -1,0 +1,33 @@
+<div class="d-flex align-items-center justify-content-center contenedor">
+  <div class="container profile-container p-4 bg-white rounded shadow">
+    <!-- Información del Usuario -->
+    <div class="text-center mb-4">
+      <img src="./assets/user.png" alt="Usuario" class="rounded-circle mb-3 user-image" />
+      <h3>{{ user?.username }}</h3>
+      <p *ngIf="!user">Cargando información del usuario...</p>
+    </div>
+
+    <!-- Cambiar Contraseña -->
+    <div class=" mb-4">
+      <div class="">
+        <h5 class="card-title">Cambiar Contraseña</h5>
+        <form (ngSubmit)="onSubmitPassword()">
+          <div class="mb-3">
+            <label for="newPassword" class="form-label">Nueva Contraseña</label>
+            <input type="password" [(ngModel)]="newPassword" name="newPassword" class="form-control" required />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Botones Actualizar y Eliminar -->
+    <div class="row g-2">
+      <div class="col-6">
+        <button type="submit" class="btn btn-primary w-100" (click)="onSubmitPassword()">Actualizar Contraseña</button>
+      </div>
+      <div class="col-6">
+        <button (click)="onDeleteAccount()" class="btn btn-danger w-100">Eliminar Cuenta</button>
+      </div>
+    </div>
+  </div>
+</div>

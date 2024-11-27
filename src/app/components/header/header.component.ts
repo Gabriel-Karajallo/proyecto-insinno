@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../core/auth/auth.service';
+import { AuthService } from '../../core/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
-  styles:`
-    #menu{color: #ffff;};
+  styles: `
+    #menu{color: #ffff;}
   `
 })
 export class HeaderComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-  ) {}
+  ) { }
 
   // Llamada al método logout()
   logout(): void {

@@ -19,6 +19,10 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LayoutComponent } from './layout/layout.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LoginComponent,
     RegisterComponent,
     Error404PageComponent,
+    LayoutComponent,
+    ProfileComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
 
   imports: [
@@ -33,14 +41,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    MaterialModule,
-    ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
+
+
+    MaterialModule,
     DashboardModule,
     SharedModule,
     MatSnackBarModule
   ],
-  exports:[
+  exports: [
   ],
 
   providers: [

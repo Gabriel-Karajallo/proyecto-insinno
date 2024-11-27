@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AbstractWebService } from '../services/abstract-web.service';
 import { PersistenceService } from '../services/persistence.service';
@@ -24,11 +24,19 @@ export class AuthService {
     const body = { username, password };
 
     return this.AbstractWebService.post('/auth/login', body).pipe(
+      tap((response: any) => {
+        console.log('Token recibido:', response.jwt); // Verificar si llega
+        if (response && response.jwt) {
+          this.persistenceService.saveToLocalStorage(response.jwt);  // Guardar el token
+        } else {
+          console.error('El backend no devolvió un token');
+        }
+      }),
       catchError((error) => {
         console.error('Error de autenticación', error);
         throw error;
       })
-    )
+    );
   }
 
   // Verificar si el usuario está autenticado
@@ -42,23 +50,23 @@ export class AuthService {
       password,
     };
 
-    return this.AbstractWebService.postRegister('/api/users/register',  payload ); // Realiza una llamada POST al backend.
+    return this.AbstractWebService.postRegister('/api/users/register', payload); // Realiza una llamada POST al backend.
   }
 
   logout(): void {
     console.log('Eliminando token del localStorage');
-    this.persistenceService.removeFromLocalStorage('token');  // Elimina el token
-    this.persistenceService.removeFromLocalStorage('refreshToken'); // Si tienes refresh token
+    this.persistenceService.removeFromLocalStorage('authToken');  // Elimina el token
+    this.persistenceService.removeFromLocalStorage('authToken'); // Si tienes refresh token
     this.router.navigate(['/login']); // Redirige a la página de login
   }
 
   // Eliminar cuenta del usuario
-deleteAccount(userId: string): Observable<any> {
-  return this.AbstractWebService.delete(`/api/users/delete/${userId}`).pipe(
-    catchError((error) => {
-      console.error('Error al eliminar la cuenta:', error);
-      throw error;
-    })
-  );
-}
+  deleteAccount(userId: string): Observable<any> {
+    return this.AbstractWebService.delete(`/api/users/delete/${userId}`).pipe(
+      catchError((error) => {
+        console.error('Error al eliminar la cuenta:', error);
+        throw error;
+      })
+    );
+  }
 }

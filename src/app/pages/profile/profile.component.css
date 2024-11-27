@@ -1,0 +1,49 @@
+/* Estilo general para centrar el contenido y darle fondo */
+.bg-light {
+  background-color: #1770a8;
+  height: 80vh;
+}
+
+/* Centrar el contenedor y darle una anchura máxima */
+.profile-container {
+  max-width: 400px;
+}
+
+/* Estilo para la imagen de usuario */
+.user-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Centrar el texto debajo de la imagen */
+.text-center h3 {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+
+/* Estilo del título en las tarjetas */
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-family: "Figtree", sans-serif;
+}
+
+.form-label {
+  font-family: "Figtree", sans-serif;
+
+}
+
+/* Botones */
+.btn-primary {
+  background-color: #1770a8;
+  border-color: #007bff;
+  font-family: "Figtree", sans-serif;
+}
+
+.btn-danger {
+  background-color: #b12533;
+  border-color: #dc3545;
+  font-family: "Figtree", sans-serif;
+}

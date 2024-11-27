@@ -4,20 +4,24 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class PersistenceService {
-
+  private tokenKey = 'authToken';
   // Guardar un item en el localStorage
-  saveToLocalStorage(key: string, value: string): void {
-    localStorage.setItem(key, value);
+  saveToLocalStorage(token: string): void {
+    if (token && token.trim() !== '') {
+      localStorage.setItem(this.tokenKey, token);  // Guardar el token en localStorage
+    } else {
+      console.error('Token vacío recibido, no se guardó en localStorage');
+    }
   }
 
   // Obtener un item del localStorage
-  getFromLocalStorage(key: string): string | null {
-    return localStorage.getItem(key);
+  getFromLocalStorage(token: string): string | null {
+    return localStorage.getItem(this.tokenKey);
   }
 
   // Eliminar un item del localStorage
-  removeFromLocalStorage(key: string): void {
-    localStorage.removeItem(key);
+  removeFromLocalStorage(token: string): void {
+    localStorage.removeItem(token);
   }
 
   // Limpiar todo el localStorage
