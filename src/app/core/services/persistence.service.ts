@@ -16,7 +16,7 @@ export class PersistenceService {
 
   // Obtener un item del localStorage
   getFromLocalStorage(token: string): string | null {
-    return localStorage.getItem(this.tokenKey);
+    return localStorage.getItem(token);
   }
 
   // Eliminar un item del localStorage
