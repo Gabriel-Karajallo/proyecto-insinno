@@ -23,7 +23,7 @@ export class AuthService {
   login(username: string, password: string): Observable<any> {
     const body = { username, password };
 
-    return this.AbstractWebService.post('/auth/login', body).pipe(
+    return this.AbstractWebService.post('/auth/login/', body).pipe(
       tap((response: any) => {
         console.log('Token recibido:', response.jwt); // Verificar si llega
         if (response && response.jwt) {

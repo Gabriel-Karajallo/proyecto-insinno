@@ -37,10 +37,10 @@ export class ProfileComponent implements OnInit {
     const token = this.persistenceService.getFromLocalStorage('authToken');
     if (token) {
       const decodedToken = this.decodeToken(token);
-      const userId = decodedToken?.id;  // Extraemos el 'id' del token
-
-      if (userId) {
-        this.dataManagementService.getUser(userId).subscribe({
+      const id = decodedToken.id;  // Extraemos el 'id' del token
+      console.log('ID extraído del token:', id);
+      if (id) {
+        this.dataManagementService.getUser(id).subscribe({
           next: (user) => {
             console.log('Datos del usuario recibidos:', user);
             this.user = user;  // Guardamos los datos del usuario
@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
           }
         });
       } else {
-        console.error('No se pudo obtener el userId del token.');
+        console.error('No se pudo obtener el id del token.');
       }
     } else {
       console.error('Token no disponible en localStorage.');
@@ -60,8 +60,9 @@ export class ProfileComponent implements OnInit {
   // Decodificar el token (JWT)
   decodeToken(token: string): any {
     try {
-      const payload = token.split('.')[1];  // Decodificamos el payload
+      const payload = token.split('.')[1];  // Decodificar el payload
       const decodedPayload = JSON.parse(atob(payload));
+      console.log('Payload decodificado del token:', decodedPayload);
       return decodedPayload;  // Retornamos todo el payload, que incluye el 'id'
     } catch (error) {
       console.error('Error al decodificar el token:', error);

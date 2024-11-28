@@ -1,49 +1,71 @@
-/* Estilo general para centrar el contenido y darle fondo */
-.bg-light {
-  background-color: #1770a8;
-  height: 80vh;
-}
-
-/* Centrar el contenedor y darle una anchura máxima */
+/* contenedor del perfil */
 .profile-container {
-  max-width: 400px;
+  max-width: 900px;
+  min-height: 70vh;
 }
 
-/* Estilo para la imagen de usuario */
+/* imagen de usuario */
 .user-image {
   width: 150px;
   height: 150px;
   object-fit: cover;
+  border: 2px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Centrar el texto debajo de la imagen */
+/*título del nombre de usuario */
 .text-center h3 {
   margin-top: 10px;
   font-weight: bold;
+  font-family: "Figtree", sans-serif;
 }
 
+p {
+  font-family: "Figtree", sans-serif;
+}
 
-/* Estilo del título en las tarjetas */
+.form-label {
+  font-family: "Figtree", sans-serif;
+}
+
+/*tarjetas */
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/*título en las tarjetas */
 .card-title {
   font-size: 1.25rem;
   font-weight: bold;
   font-family: "Figtree", sans-serif;
 }
 
-.form-label {
-  font-family: "Figtree", sans-serif;
-
-}
-
 /* Botones */
 .btn-primary {
   background-color: #1770a8;
-  border-color: #007bff;
+  border-color: #1770a8;
   font-family: "Figtree", sans-serif;
 }
 
 .btn-danger {
-  background-color: #b12533;
-  border-color: #dc3545;
+  background-color: rgb(160, 13, 13);
+  border-color: rgb(160, 13, 13);
   font-family: "Figtree", sans-serif;
+}
+
+/* Espaciado para dispositivos móviles */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 20px;
+  }
+
+  .user-image {
+    margin-bottom: 15px;
+  }
+
+  .eliminar-cuenta {
+    text-align: center;
+    width: 100%;
+  }
 }

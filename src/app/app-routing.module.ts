@@ -9,6 +9,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,10 +17,11 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: LayoutComponent,
-    // canActivate: [testGuardGuard],
+    canActivate: [testGuardGuard],
     children: [
       { path: 'products', component: ProductsComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'contact', component: ContactComponent },
       { path: 'order', component: OrdersComponent },
       { path: '', redirectTo: '/dashboard/products', pathMatch: 'full' },
       { path: '**', redirectTo: '/dashboard/products' }

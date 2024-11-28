@@ -1,0 +1,64 @@
+.container {
+  max-width: 800px;
+  padding: 20px;
+}
+
+.bg-primary {
+  background: url('https://auth.ticketmaster.com/assets/left-panel-image.e3d210a9.png') no-repeat center center;
+  background-size: cover;
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.col-lg-6 {
+  height: 80vh;
+}
+
+.contactanos {
+  border-bottom: solid 3px #2ca8f5;
+
+}
+
+h3 {
+  font-family: "Figtree", sans-serif;
+  color: #2ca8f5;
+}
+
+p {
+  font-family: "Figtree", sans-serif;
+  margin-bottom: 30px;
+}
+
+.formulario {
+  background-color: #e0e2ec;
+  padding: 40px;
+}
+
+
+
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 768px) {
+
+  /* Ocultar la columna izquierda en móviles */
+  .d-lg-flex {
+    display: none !important;
+  }
+
+  /*formulario ocupa toda la pantalla */
+  .container {
+    max-width: 100%;
+  }
+}
+
+/* Estilo del formulario */
+.mat-form-field {
+  display: block;
+}
+
+/* Botón */
+button {
+  width: 100%;
+}

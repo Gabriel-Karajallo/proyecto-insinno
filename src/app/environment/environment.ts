@@ -1,8 +1,8 @@
 export const environments = {
   baseUrl: 'http://192.168.1.191:8080',
-  apiPrefix: '/api'
+  apiPrefix: '/auth/'
 }
 
 export const endPoints = {
-  users: '/users/'
+  users: 'login/'
 }

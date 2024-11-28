@@ -27,8 +27,9 @@ export class DataManagementService {
   }
 
   //  datos del usuarioObtener
-  public getUser(userId: string): Observable<any> {
-    return this.rest.getUser(userId);
+  public getUser(id: string): Observable<any> {
+    console.log('DataManagementService: ID recibido para buscar usuario:', id);
+    return this.rest.getUser(id);
   }
 
 }
