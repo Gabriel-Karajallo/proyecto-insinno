@@ -21,7 +21,7 @@ export class AbstractWebService {
 
   // peticion GET
   get<T>(url: string): Observable<T> {
-    return this.http.get<T>(`${environments.baseUrl}${url}`);
+    return this.http.get<T>(url);
   }
 
   // PUT (actualizar)
@@ -31,6 +31,6 @@ export class AbstractWebService {
 
   // DELETE (eliminar)
   delete<T>(url: string): Observable<T> {
-    return this.http.delete<T>(`${environments.baseUrl}${url}`);
+    return this.http.delete<T>(url);
   }
 }

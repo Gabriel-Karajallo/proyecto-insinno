@@ -1,14 +1,10 @@
-interface User {
-  id: string;
-  username: string;
-};
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataManagementService } from '../../core/services/data-management.service';
 import { AuthService } from '../../core/auth/auth.service';
 import { PersistenceService } from '../../core/services/persistence.service';
-
+import { User } from '../../interfaces/user';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -34,16 +30,17 @@ export class ProfileComponent implements OnInit {
 
   // Cargar datos del usuario desde el token
   loadUserData(): void {
-    const token = this.persistenceService.getFromLocalStorage('authToken');
+    const token = this.persistenceService.getFromLocalStorage();
     if (token) {
       const decodedToken = this.decodeToken(token);
-      const id = decodedToken.id;  // Extraemos el 'id' del token
+      const id = decodedToken?.id;  // Extraemos el 'id' del token
       console.log('ID extraído del token:', id);
       if (id) {
         this.dataManagementService.getUser(id).subscribe({
           next: (user) => {
             console.log('Datos del usuario recibidos:', user);
             this.user = user;  // Guardamos los datos del usuario
+            console.log('Los datos del usuario:' + user)
           },
           error: (err) => {
             console.error('Error al cargar datos del usuario:', err);
@@ -74,17 +71,17 @@ export class ProfileComponent implements OnInit {
   onDeleteAccount(): void {
     const confirmed = confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no puede deshacerse.');
     if (confirmed) {
-      const token = this.persistenceService.getFromLocalStorage('authToken');
+      const token = this.persistenceService.getFromLocalStorage();
       if (token) {
         const decodedToken = this.decodeToken(token);
 
         if (decodedToken && decodedToken.id) {
-          const userId = decodedToken.id; // Asegúrate de que "id" sea el campo correcto en el token
+          const id = decodedToken.id; // Extraemos el ID del usuario del token
 
-          this.AuthService.deleteAccount(userId).subscribe({
+          this.AuthService.deleteAccount(id).subscribe({
             next: () => {
               alert('Cuenta eliminada exitosamente.');
-              this.persistenceService.removeFromLocalStorage('authToken'); // Elimina el token
+              this.persistenceService.removeFromLocalStorage(); // Elimina el token
               this.router.navigate(['/login']); // Redirige al login
             },
             error: (err) => {
@@ -93,7 +90,7 @@ export class ProfileComponent implements OnInit {
             }
           });
         } else {
-          console.error('No se pudo obtener el userId del token.');
+          console.error('No se pudo obtener el Id del token.');
         }
       } else {
         console.error('Token no disponible en localStorage.');

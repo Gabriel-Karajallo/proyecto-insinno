@@ -23,7 +23,7 @@ export class DataManagementService {
 
   //obtener el token
   public getToken(): string | null {
-    return this.persistenceService.getFromLocalStorage('authToken');
+    return this.persistenceService.getFromLocalStorage();
   }
 
   //  datos del usuarioObtener

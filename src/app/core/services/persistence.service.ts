@@ -15,13 +15,13 @@ export class PersistenceService {
   }
 
   // Obtener un item del localStorage
-  getFromLocalStorage(token: string): string | null {
-    return localStorage.getItem(token);
+  getFromLocalStorage(): string | null {
+    return localStorage.getItem(this.tokenKey);
   }
 
   // Eliminar un item del localStorage
-  removeFromLocalStorage(token: string): void {
-    localStorage.removeItem(token);
+  removeFromLocalStorage(): void {
+    localStorage.removeItem(this.tokenKey);
   }
 
   // Limpiar todo el localStorage

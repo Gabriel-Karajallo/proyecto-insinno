@@ -1,19 +1,22 @@
-.toolbar{
+.toolbar {
   background-color: #1770a8 !important;
 }
-.buton-icon{
+
+.buton-icon {
   margin-left: auto;
 }
-.icon-list{
+
+.icon-list {
   color: #1770a8 !important;
 }
 
-.container-title{
+.container-title {
   display: flex;
   justify-content: center;
   text-align: center;
   margin-left: 20px;
 }
+
 .anta-regular {
   font-family: "Anta", sans-serif;
   font-weight: 400;

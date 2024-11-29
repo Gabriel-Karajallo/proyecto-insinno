@@ -35,13 +35,32 @@ p {
 .formulario {
   background-color: #e0e2ec;
   padding: 40px;
+
 }
+
+.imagen {}
 
 mat-label {
   font-size: 15px;
   font-family: "Figtree", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+}
+
+mat-option {
+  font-size: 15px;
+  font-family: "Figtree", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.logo {
+  width: 50px;
+}
+
+.figtree {
+  font-family: "Figtree", sans-serif;
+
 }
 
 .enviar {
@@ -61,6 +80,7 @@ mat-label {
   /*formulario ocupa toda la pantalla */
   .container {
     max-width: 100%;
+
   }
 }
 

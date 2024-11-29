@@ -10,7 +10,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const token = this.persistenceService.getFromLocalStorage('authToken');  // Obtener el token del localStorage
+    const token = this.persistenceService.getFromLocalStorage();  // Obtener el token del localStorage
     if (token) {
       const clonedRequest = req.clone({
         setHeaders: {

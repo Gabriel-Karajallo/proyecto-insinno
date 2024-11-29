@@ -1,3 +1,4 @@
+import { environments, endPoints } from './../../environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -6,7 +7,6 @@ import { Router } from '@angular/router';
 import { AbstractWebService } from '../services/abstract-web.service';
 import { PersistenceService } from '../services/persistence.service';
 import { DataManagementService } from '../services/data-management.service';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +17,8 @@ export class AuthService {
     private router: Router,
     private AbstractWebService: AbstractWebService,
     private persistenceService: PersistenceService,
-    private DataManagementService: DataManagementService) { }
+    private DataManagementService: DataManagementService,
+  ) { }
 
   //autenticación
   login(username: string, password: string): Observable<any> {
@@ -55,14 +56,17 @@ export class AuthService {
 
   logout(): void {
     console.log('Eliminando token del localStorage');
-    this.persistenceService.removeFromLocalStorage('authToken');  // Elimina el token
-    this.persistenceService.removeFromLocalStorage('authToken'); // Si tienes refresh token
+    this.persistenceService.removeFromLocalStorage();  // Elimina el token
+    this.persistenceService.removeFromLocalStorage(); // Si tienes refresh token
     this.router.navigate(['/login']); // Redirige a la página de login
   }
 
   // Eliminar cuenta del usuario
-  deleteAccount(userId: string): Observable<any> {
-    return this.AbstractWebService.delete(`/api/users/delete/${userId}`).pipe(
+  url = environments.baseUrl + environments.apiPrefix;
+  deleteAccount(id: string): Observable<any> {
+    const finalUrl = `${this.url + endPoints.deleteUser}${id}`;
+    console.log('URL generada para eliminar cuenta:', finalUrl); // Verifica la URL generada
+    return this.AbstractWebService.delete(finalUrl).pipe(
       catchError((error) => {
         console.error('Error al eliminar la cuenta:', error);
         throw error;

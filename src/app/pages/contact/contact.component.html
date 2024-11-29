@@ -1,7 +1,7 @@
 <div class="container  d-flex align-items-center justify-content-center">
   <div class="row w-100 align-items-center shadow rounded overflow-hidden bg-white">
     <!-- Columna izquierda: Imagen con título y descripción -->
-    <div class="col-lg-6 d-none d-lg-flex flex-column bg-primary text-white p-4">
+    <div class="col-lg-6 d-none d-lg-flex flex-column bg-primary text-white p-4 imagen">
       <div class="mt-4 contactanos">
         <h3 class="display-5 fw-bold">¡Contáctanos!</h3>
         <p class="mt-3">
@@ -12,6 +12,10 @@
 
     <!-- Columna derecha: Formulario de contacto -->
     <div class="col-lg-6 formulario">
+      <div class="text-center">
+        <img class="logo" src="./assets/logo.png" alt="">
+        <h5 class="figtree">Contacto</h5>
+      </div>
       <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
         <!-- Campo de nombre -->
         <div class="mb-4">

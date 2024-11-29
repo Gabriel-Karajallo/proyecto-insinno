@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth/auth.service';
 import { Router } from '@angular/router';
-
+import { User } from '../../interfaces/user';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   `
 })
 export class HeaderComponent {
+  user: User | null = null;
   constructor(
     private authService: AuthService,
     private router: Router,
