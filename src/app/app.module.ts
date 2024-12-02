@@ -24,6 +24,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { DeleteAccountDialogComponent } from './shared/pages/delete-acount/delete-acount.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ContactComponent } from './pages/contact/contact.component';
     HeaderComponent,
     FooterComponent,
     ContactComponent,
+    DeleteAccountDialogComponent
   ],
 
   imports: [

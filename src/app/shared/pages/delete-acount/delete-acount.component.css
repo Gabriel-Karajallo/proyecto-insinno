@@ -1,0 +1,16 @@
+.success-snackbar {
+  background-color: #4caf50;
+  /* Verde para éxito */
+  color: white;
+}
+
+.error-snackbar {
+  background-color: #f44336;
+  /* Rojo para error */
+  color: white;
+}
+
+.title {
+  font-family: "Figtree", sans-serif;
+
+}

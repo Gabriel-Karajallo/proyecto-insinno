@@ -10,7 +10,7 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
   imports: [
     CommonModule,
   ],
-  exports:[
+  exports: [
   ]
 })
 export class SharedModule { }

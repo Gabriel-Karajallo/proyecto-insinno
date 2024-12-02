@@ -1,9 +1,12 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataManagementService } from '../../core/services/data-management.service';
 import { AuthService } from '../../core/auth/auth.service';
 import { PersistenceService } from '../../core/services/persistence.service';
+import { DeleteAccountDialogComponent } from '../../shared/pages/delete-acount/delete-acount.component';
 import { User } from '../../interfaces/user';
 @Component({
   selector: 'app-profile',
@@ -17,6 +20,8 @@ export class ProfileComponent implements OnInit {
   newPassword: string = '';
 
   constructor(
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
     private dataManagementService: DataManagementService,
     private persistenceService: PersistenceService,
     private router: Router,
@@ -68,35 +73,39 @@ export class ProfileComponent implements OnInit {
   }
 
   // Eliminar cuenta
-  onDeleteAccount(): void {
-    const confirmed = confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no puede deshacerse.');
-    if (confirmed) {
-      const token = this.persistenceService.getFromLocalStorage();
-      if (token) {
-        const decodedToken = this.decodeToken(token);
+  public onDeleteAccount(): void {
+    const dialogRef = this.dialog.open(DeleteAccountDialogComponent);
 
-        if (decodedToken && decodedToken.id) {
-          const id = decodedToken.id; // Extraemos el ID del usuario del token
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        const token = this.persistenceService.getFromLocalStorage();
+        if (token) {
+          const decodedToken = this.decodeToken(token);
 
-          this.AuthService.deleteAccount(id).subscribe({
-            next: () => {
-              alert('Cuenta eliminada exitosamente.');
-              this.persistenceService.removeFromLocalStorage(); // Elimina el token
-              this.router.navigate(['/login']); // Redirige al login
-            },
-            error: (err) => {
-              console.error('Error al eliminar la cuenta:', err);
-              alert('Ocurrió un error al intentar eliminar la cuenta.');
-            }
-          });
+          if (decodedToken && decodedToken.id) {
+            const id = decodedToken.id; // Extraemos el ID del usuario del token
+
+            this.AuthService.deleteAccount(id).subscribe({
+              next: () => {
+                alert('Cuenta eliminada exitosamente.');
+                this.persistenceService.removeFromLocalStorage(); // Elimina el token
+                this.router.navigate(['/login']); // Redirige al login
+              },
+              error: (err) => {
+                console.error('Error al eliminar la cuenta:', err);
+                alert('Ocurrió un error al intentar eliminar la cuenta.');
+              }
+            });
+          } else {
+            console.error('No se pudo obtener el Id del token.');
+          }
         } else {
-          console.error('No se pudo obtener el Id del token.');
+          console.error('Token no disponible en localStorage.');
         }
-      } else {
-        console.error('Token no disponible en localStorage.');
       }
-    }
-  }
+    });
+
+  };
 
 
   // Manejar la actualización de la contraseña
