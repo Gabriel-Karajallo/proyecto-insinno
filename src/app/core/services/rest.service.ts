@@ -28,4 +28,20 @@ export class RestService extends AbstractWebService {
       })
     );
   }
+
+  //actualizar username
+  public updateUserField(field: string, value: string): Observable<any> {
+    const url = environments.baseUrl + endPoints.updateUsername; // URL base para actualizar
+    const body = { [field]: value }; // Genera dinámicamente el campo a actualizar
+
+    console.log(`Actualizando ${field} con el valor:`, value);
+
+    return this.put(url, body).pipe(
+      tap(response => console.log(`Respuesta de la API al actualizar ${field}:`, response)),
+      catchError((error) => {
+        console.error(`Error al actualizar ${field}:`, error);
+        throw error;
+      })
+    );
+  }
 }

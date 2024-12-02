@@ -25,17 +25,13 @@ export class AbstractWebService {
   }
 
   // PUT (actualizar)
-  put<T>(url: string, body: any): Observable<T> {
-    return this.http.put<T>(`${environments.baseUrl}${url}`, body);
+  put<T>(url: string, body: T, options: any = {}): Observable<any> {
+    return this.http.put<T>(url, body, { ...options, responseType: options.responseType || 'json' });
   }
 
-  // DELETE (eliminar)
-  // delete<T>(url: string): Observable<T> {
-  //   return this.http.delete<T>(url);
-  // }
 
   delete(url: string, options: any = {}): Observable<any> {
-    return this.http.delete(url, { ...options, responseType: options.responseType || 'json' }) // <-- Agregar { observe: 'response' }
+    return this.http.delete(url, { ...options, responseType: options.responseType || 'json' })
       .pipe(
         tap(response => {
           console.log('Respuesta completa:', response);

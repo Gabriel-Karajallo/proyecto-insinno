@@ -30,6 +30,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group(
       {
         username: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
         password: ['', [
           Validators.required,
           Validators.minLength(6),
@@ -84,11 +85,11 @@ export class RegisterComponent implements OnInit {
   // envía los datos del formulario de registro
   onRegister(): void {
     if (this.registerForm.valid) {
-      const { username, password } = this.registerForm.value;
+      const { username, password, email } = this.registerForm.value;
 
       this.loadRegister = true; //mostrar el spinner mientras se hace la peticion
       // Aquí se llamaría al servicio de autenticación para registrar al usuario
-      this.authService.register(username, password).subscribe(
+      this.authService.register(username, password, email).subscribe(
         (response) => {
           this.loadRegister = false;
           console.log('Registro exitoso:', response);
@@ -105,6 +106,7 @@ export class RegisterComponent implements OnInit {
           //limpiar los campos del formulario
           this.registerForm.reset({
             username: '',
+            email: '',
             password: '',
             confirmPassword: '',
           });
@@ -117,9 +119,9 @@ export class RegisterComponent implements OnInit {
           this.loadRegister = false;
           if (error.status === 400) {
             this.errorMessage = 'Ese nombre de usuario ya está registrado';
-        } else {
+          } else {
             this.errorMessage = 'Error al registrar el usuario. Inténtalo de nuevo más tarde.';
-        }
+          }
         }
       );
     } else {

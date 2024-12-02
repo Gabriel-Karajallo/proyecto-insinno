@@ -1,7 +1,22 @@
-<div *ngIf="isLoading"  class="spinner-container">
+<div *ngIf="isLoading" class="spinner-container">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
-    <style>@keyframes loader4{0%{-webkit-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}</style>
-    <path stroke="#ffff" stroke-linecap="round" stroke-width="1.5" d="M12 6.864v1.333m0 7.606v1.333M17.136 12h-1.333m-7.606 0H6.864m8.768 3.632l-.943-.943M9.311 9.311l-.943-.943m0 7.264l.943-.943m5.378-5.378l.943-.943" style="animation:loader4 1.5s linear infinite both;transform-origin:center center"/></svg>
+    <style>
+      @keyframes loader4 {
+        0% {
+          -webkit-transform: rotate(0);
+          transform: rotate(0)
+        }
+
+        to {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg)
+        }
+      }
+    </style>
+    <path stroke="#ffff" stroke-linecap="round" stroke-width="1.5"
+      d="M12 6.864v1.333m0 7.606v1.333M17.136 12h-1.333m-7.606 0H6.864m8.768 3.632l-.943-.943M9.311 9.311l-.943-.943m0 7.264l.943-.943m5.378-5.378l.943-.943"
+      style="animation:loader4 1.5s linear infinite both;transform-origin:center center" />
+  </svg>
 </div>
 
 <div *ngIf="!isLoading" class="register-container" [@zoomInAnimation]>
@@ -18,12 +33,29 @@
         <mat-form-field class="example-form-field full-width mt-3 mb-2" hideRequiredMarker>
           <mat-label>Usuario
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-              <circle class="user-1" cx="12" cy="8.245" r="2.5" stroke="#1770a8" stroke-width="1.5"/>
-              <ellipse cx="12" cy="15.926" stroke="#0A0A30" stroke-width="1.5" rx="5" ry="2.329"/>
+              <circle class="user-1" cx="12" cy="8.245" r="2.5" stroke="#1770a8" stroke-width="1.5" />
+              <ellipse cx="12" cy="15.926" stroke="#0A0A30" stroke-width="1.5" rx="5" ry="2.329" />
             </svg>
           </mat-label>
           <input matInput formControlName="username" required />
           <mat-error *ngIf="registerForm.get('username')?.hasError('required')">El usuario es obligatorio.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field full-width mt-3 mb-2" hideRequiredMarker>
+          <mat-label>Correo
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+              <rect width="12" height="10" x="6" y="8.804" stroke="#0A0A30" stroke-width="1.5" rx="2" />
+              <path fill="#fff" stroke="#265BFF" stroke-width="1.5"
+                d="M9 6.196a1 1 0 011-1h4a1 1 0 011 1v5.082a1 1 0 01-.37.777l-2.006 1.628a1 1 0 01-1.263-.002l-1.993-1.626A1 1 0 019 11.28V6.196z"
+                style="animation:open 2s cubic-bezier(.49,.39,.35,1.06) both infinite" />
+              <path stroke="#0A0A30" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M8.465 11.413l3.573 2.783 3.497-2.783" />
+            </svg>
+          </mat-label>
+          <input matInput formControlName="email" required />
+          <mat-error *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched">
+            Introduce un correo electrónico válido..</mat-error>
+
         </mat-form-field>
 
         <mat-form-field class="example-form-field full-width mt-3 mb-2" hideRequiredMarker>
@@ -37,7 +69,8 @@
           <input [type]="showPassword ? 'text' : 'password'" matInput formControlName="password" required />
 
           <!-- ERRORES -->
-          <mat-error *ngIf="registerForm.get('password')?.hasError('required')">La contraseña es obligatoria.</mat-error>
+          <mat-error *ngIf="registerForm.get('password')?.hasError('required')">La contraseña es
+            obligatoria.</mat-error>
           <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
             La contraseña debe tener al menos 6 caracteres.
           </mat-error>
@@ -77,13 +110,13 @@
         </div>
 
         <div class="text-center m-3">
-        <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Registrarse</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Registrarse</button>
         </div>
         <div class="text-center mt-4 mb-2 parrafo">
-          <p class="mb-0">¿Ya tienes cuenta? <a [routerLink]="['/login']" routerLinkActive="router-link-active"  href="" class="iniciar-sesion">Iniciar sesión</a></p>
+          <p class="mb-0">¿Ya tienes cuenta? <a [routerLink]="['/login']" routerLinkActive="router-link-active" href=""
+              class="iniciar-sesion">Iniciar sesión</a></p>
         </div>
       </form>
     </mat-card-content>
   </mat-card>
 </div>
-

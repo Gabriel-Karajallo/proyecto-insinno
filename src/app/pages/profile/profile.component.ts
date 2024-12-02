@@ -17,7 +17,14 @@ import { User } from '../../interfaces/user';
 export class ProfileComponent implements OnInit {
 
   user: User | null = null;
+  email: User | null = null;
+
+  // actualizar datos del usuario
   newPassword: string = '';
+  newEmail: string = '';
+  newUsername: string = '';
+  isLoading = false;
+  errorMessage: string | null = null;
 
   constructor(
     private dialog: MatDialog,
@@ -121,15 +128,54 @@ export class ProfileComponent implements OnInit {
   };
 
 
-  // Manejar la actualización de la contraseña
-  onSubmitPassword(): void {
-
-
-
-
-
-    console.log('Nueva contraseña:', this.newPassword);
+  // Actualizar nombre de usuario
+  updateUsername() {
+    this.isLoading = true;
+    this.dataManagementService.updateUsername(this.newUsername).subscribe(
+      (response) => {
+        this.isLoading = false;
+        console.log('Nombre de usuario actualizado:', response);
+      },
+      (error) => {
+        this.isLoading = false;
+        this.errorMessage = 'Error al actualizar el nombre de usuario';
+        console.error(error);
+      }
+    );
   }
+
+  // Actualizar contraseña
+  updatePassword() {
+    this.isLoading = true;
+    this.dataManagementService.updatePassword(this.newPassword).subscribe(
+      (response) => {
+        this.isLoading = false;
+        console.log('Contraseña actualizada:', response);
+      },
+      (error) => {
+        this.isLoading = false;
+        this.errorMessage = 'Error al actualizar la contraseña';
+        console.error(error);
+      }
+    );
+  }
+
+  // Actualizar correo
+  updateEmail() {
+    this.isLoading = true;
+    this.dataManagementService.updateEmail(this.newEmail).subscribe(
+      (response) => {
+        this.isLoading = false;
+        console.log('Correo actualizado:', response);
+      },
+      (error) => {
+        this.isLoading = false;
+        this.errorMessage = 'Error al actualizar el correo';
+        console.error(error);
+      }
+    );
+  }
+
 
 
 }

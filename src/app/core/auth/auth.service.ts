@@ -45,9 +45,10 @@ export class AuthService {
     return this.DataManagementService.getToken() !== null;
   }
   // registrar un nuevo usuario
-  register(username: string, password: string): Observable<any> {
+  register(username: string, password: string, email: string): Observable<any> {
     const payload = {
       username,
+      email,
       password,
     };
 

@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { PersistenceService } from '../services/persistence.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RestService } from './rest.service';
+import { PersistenceService } from './persistence.service';
+import { AbstractWebService } from './abstract-web.service';
+import { environments, endPoints } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,7 @@ export class DataManagementService {
     private http: HttpClient,
     private persistenceService: PersistenceService,
     private rest: RestService,
+    private AbstractWebService: AbstractWebService,
   ) { }
 
   //guardar el token en el almacenamiento
@@ -30,6 +33,21 @@ export class DataManagementService {
   public getUser(id: string): Observable<any> {
     console.log('DataManagementService: ID recibido para buscar usuario:', id);
     return this.rest.getUser(id);
+  }
+
+  //actualizar usuario
+  updateUsername(username: string): Observable<any> {
+    return this.rest.updateUserField('username', username);
+  }
+
+  //actualizar contraseña
+  updatePassword(password: string): Observable<any> {
+    return this.rest.updateUserField('password', password);
+  }
+
+  //actualizar correo
+  updateEmail(email: string): Observable<any> {
+    return this.rest.updateUserField('email', email);
   }
 
 }
