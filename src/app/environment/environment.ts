@@ -6,5 +6,7 @@ export const environments = {
 export const endPoints = {
   users: '/users/',
   deleteUser: '/users/delete/',
-  updateUsername: '/update-username/'
+  updateUsername: '/updateUsername/',
+  updatePassword: '/updatePassword/',
+  updateEmail: '/updateEmail/'
 }

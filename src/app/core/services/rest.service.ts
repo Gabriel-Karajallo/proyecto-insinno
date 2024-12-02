@@ -30,18 +30,45 @@ export class RestService extends AbstractWebService {
   }
 
   //actualizar username
-  public updateUserField(field: string, value: string): Observable<any> {
-    const url = environments.baseUrl + endPoints.updateUsername; // URL base para actualizar
-    const body = { [field]: value }; // Genera dinámicamente el campo a actualizar
-
-    console.log(`Actualizando ${field} con el valor:`, value);
-
-    return this.put(url, body).pipe(
-      tap(response => console.log(`Respuesta de la API al actualizar ${field}:`, response)),
+  public updateUsername(username: string, value: string): Observable<any> {
+    // URL base para actualizar
+    const url = environments.baseUrl + environments.apiPrefix + endPoints.users + endPoints.updateUsername;
+    return this.put(url, { username }).pipe(
+      tap(response => console.log(`Respuesta de la API al actualizar ${username}:`, response)),
       catchError((error) => {
-        console.error(`Error al actualizar ${field}:`, error);
+        console.error(`Error al actualizar ${username}:`, error);
         throw error;
       })
     );
   }
+
+
+  //actualizar contraseña
+  public updatePassword(password: string, value: string): Observable<any> {
+    // URL base para actualizar
+    const url = environments.baseUrl + environments.apiPrefix + endPoints.users + endPoints.updateUsername;
+    return this.put(url, { password }).pipe(
+      tap(response => console.log(`Respuesta de la API al actualizar ${password}:`, response)),
+      catchError((error) => {
+        console.error(`Error al actualizar ${password}:`, error);
+        throw error;
+      })
+    );
+  }
+
+  //actualizar correo
+  public updateEmail(email: string, value: string): Observable<any> {
+    // URL base para actualizar
+    const url = environments.baseUrl + environments.apiPrefix + endPoints.users + endPoints.updateUsername;
+    return this.put(url, { email }).pipe(
+      tap(response => console.log(`Respuesta de la API al actualizar ${email}:`, response)),
+      catchError((error) => {
+        console.error(`Error al actualizar ${email}:`, error);
+        throw error;
+      })
+    );
+  }
+
+
 }
+

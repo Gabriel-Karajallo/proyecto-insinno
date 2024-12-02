@@ -37,17 +37,17 @@ export class DataManagementService {
 
   //actualizar usuario
   updateUsername(username: string): Observable<any> {
-    return this.rest.updateUserField('username', username);
+    return this.rest.updateUsername('username', username);
   }
 
   //actualizar contraseña
   updatePassword(password: string): Observable<any> {
-    return this.rest.updateUserField('password', password);
+    return this.rest.updatePassword('password', password);
   }
 
   //actualizar correo
   updateEmail(email: string): Observable<any> {
-    return this.rest.updateUserField('email', email);
+    return this.rest.updateEmail('email', email);
   }
 
 }

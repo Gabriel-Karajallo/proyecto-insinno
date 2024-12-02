@@ -22,10 +22,11 @@
                 <input type="text" [(ngModel)]="newUsername" name="newUsername" class="form-control" required />
               </div>
               <div class="">
-                <div *ngIf="isLoading" class="spinner-container">
+                <div *ngIf="isLoading1" class="spinner-container">
                   <mat-spinner diameter="25"></mat-spinner>
                 </div>
-                <button type="submit" class="btn btn-primary w-100 mb-4">Actualizar Nombre</button>
+                <button type="submit" class="btn btn-primary w-100 mb-4" (click)="updateUsername()">Actualizar
+                  Nombre</button>
               </div>
             </form>
 
@@ -36,13 +37,11 @@
                 <input type="password" [(ngModel)]="newPassword" name="newPassword" class="form-control" required />
               </div>
               <div class="">
-                <div *ngIf="isLoading" class="spinner-container">
+                <div *ngIf="isLoading2" class="spinner-container">
                   <mat-spinner diameter="25"></mat-spinner>
                 </div>
-                <div *ngIf="isLoading" class="spinner-container">
-                  <mat-spinner diameter="25"></mat-spinner>
-                </div>
-                <button type="submit" class=" mb-4 btn btn-primary w-100 mb-2">Actualizar Contraseña</button>
+                <button type="submit" class=" mb-4 btn btn-primary w-100 mb-2" (click)="updatePassword()">Actualizar
+                  Contraseña</button>
               </div>
             </form>
 
@@ -50,13 +49,14 @@
               <!-- Cambiar correo -->
               <div class="mb-3">
                 <label for="newEmail" class="form-label">Nuevo Correo</label>
-                <input type="email" [(ngModel)]="newPassword" name="newEmail" class="form-control" required />
+                <input type="email" [(ngModel)]="newEmail" name="newEmail" class="form-control" required />
               </div>
               <div class="">
-                <div *ngIf="isLoading" class="spinner-container">
+                <div *ngIf="isLoading3" class="spinner-container">
                   <mat-spinner diameter="25"></mat-spinner>
                 </div>
-                <button type="submit" class="btn btn-primary w-100 mb-4">Actualizar Correo</button>
+                <button type="submit" class="btn btn-primary w-100 mb-4" (click)="updateEmail()">Actualizar
+                  Correo</button>
               </div>
             </form>
             <!-- Botones Eliminar -->

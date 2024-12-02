@@ -23,7 +23,9 @@ export class ProfileComponent implements OnInit {
   newPassword: string = '';
   newEmail: string = '';
   newUsername: string = '';
-  isLoading = false;
+  isLoading1 = false;
+  isLoading2 = false;
+  isLoading3 = false;
   errorMessage: string | null = null;
 
   constructor(
@@ -130,14 +132,15 @@ export class ProfileComponent implements OnInit {
 
   // Actualizar nombre de usuario
   updateUsername() {
-    this.isLoading = true;
+    if (!this.newUsername) return; // Verifica que el campo no esté vacío
+    this.isLoading1 = true;
     this.dataManagementService.updateUsername(this.newUsername).subscribe(
       (response) => {
-        this.isLoading = false;
+        this.isLoading1 = false;
         console.log('Nombre de usuario actualizado:', response);
       },
       (error) => {
-        this.isLoading = false;
+        this.isLoading1 = false;
         this.errorMessage = 'Error al actualizar el nombre de usuario';
         console.error(error);
       }
@@ -146,14 +149,15 @@ export class ProfileComponent implements OnInit {
 
   // Actualizar contraseña
   updatePassword() {
-    this.isLoading = true;
+    if (!this.newPassword) return;
+    this.isLoading2 = true;
     this.dataManagementService.updatePassword(this.newPassword).subscribe(
       (response) => {
-        this.isLoading = false;
+        this.isLoading2 = false;
         console.log('Contraseña actualizada:', response);
       },
       (error) => {
-        this.isLoading = false;
+        this.isLoading2 = false;
         this.errorMessage = 'Error al actualizar la contraseña';
         console.error(error);
       }
@@ -162,14 +166,15 @@ export class ProfileComponent implements OnInit {
 
   // Actualizar correo
   updateEmail() {
-    this.isLoading = true;
+    if (!this.newEmail) return;
+    this.isLoading3 = true;
     this.dataManagementService.updateEmail(this.newEmail).subscribe(
       (response) => {
-        this.isLoading = false;
+        this.isLoading3 = false;
         console.log('Correo actualizado:', response);
       },
       (error) => {
-        this.isLoading = false;
+        this.isLoading3 = false;
         this.errorMessage = 'Error al actualizar el correo';
         console.error(error);
       }
