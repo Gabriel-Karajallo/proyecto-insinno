@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environments } from '../../environment/environment';
-import { Observable } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +30,21 @@ export class AbstractWebService {
   }
 
   // DELETE (eliminar)
-  delete<T>(url: string): Observable<T> {
-    return this.http.delete<T>(url);
+  // delete<T>(url: string): Observable<T> {
+  //   return this.http.delete<T>(url);
+  // }
+
+  delete(url: string, options: any = {}): Observable<any> {
+    return this.http.delete(url, { ...options, responseType: options.responseType || 'json' }) // <-- Agregar { observe: 'response' }
+      .pipe(
+        tap(response => {
+          console.log('Respuesta completa:', response);
+        }),
+        catchError((error) => {
+          console.error('Error en DELETE request:', error);
+          return throwError(() => error);
+        })
+      );
   }
+
 }

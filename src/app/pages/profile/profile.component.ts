@@ -87,30 +87,47 @@ export class ProfileComponent implements OnInit {
 
             this.AuthService.deleteAccount(id).subscribe({
               next: () => {
-                alert('Cuenta eliminada exitosamente.');
+                this.snackBar.open('Cuenta eliminada exitosamente.', 'Cerrar', {
+                  duration: 3000,
+                  verticalPosition: 'top',
+                  horizontalPosition: 'center',
+                  panelClass: ['custom-snackbar']
+                });
+
+                // Eliminación exitosa
                 this.persistenceService.removeFromLocalStorage(); // Elimina el token
-                this.router.navigate(['/login']); // Redirige al login
+                this.persistenceService.clearLocalStorage(); //  refresh token
+
+                // Redirige al login
+                this.router.navigate(['/login']);
+
               },
               error: (err) => {
                 console.error('Error al eliminar la cuenta:', err);
-                alert('Ocurrió un error al intentar eliminar la cuenta.');
-              }
+                this.snackBar.open('Ocurrió un error al intentar eliminar la cuenta.', 'Cerrar', {
+                  duration: 3000,
+                  panelClass: ['error-snackbar'],
+                });
+              },
             });
           } else {
-            console.error('No se pudo obtener el Id del token.');
+            console.error('No se pudo obtener el ID del token.');
           }
         } else {
           console.error('Token no disponible en localStorage.');
         }
       }
     });
-
   };
 
 
   // Manejar la actualización de la contraseña
   onSubmitPassword(): void {
-    // Aquí puedes agregar lógica para enviar la nueva contraseña al backend.
+
+
+
+
+
     console.log('Nueva contraseña:', this.newPassword);
   }
 
