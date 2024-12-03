@@ -44,7 +44,7 @@ export class ProfileComponent implements OnInit {
 
 
   // Cargar datos del usuario desde el token
-  loadUserData(): void {
+  public loadUserData(): void {
     const token = this.persistenceService.getFromLocalStorage();
     if (token) {
       const decodedToken = this.decodeToken(token);
@@ -70,7 +70,7 @@ export class ProfileComponent implements OnInit {
   }
 
   // Decodificar el token (JWT)
-  decodeToken(token: string): any {
+  public decodeToken(token: string): any {
     try {
       const payload = token.split('.')[1];  // Decodificar el payload
       const decodedPayload = JSON.parse(atob(payload));
@@ -81,6 +81,8 @@ export class ProfileComponent implements OnInit {
       return null;
     }
   }
+
+
 
   // Eliminar cuenta
   public onDeleteAccount(): void {
