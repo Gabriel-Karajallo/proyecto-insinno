@@ -1,6 +1,7 @@
 export const environments = {
   baseUrl: 'http://192.168.1.191:8080',
-  apiPrefix: '/api'
+  apiPrefix: '/api',
+  isMock: true
 }
 
 export const endPoints = {
@@ -8,5 +9,5 @@ export const endPoints = {
   deleteUser: '/users/delete/',
   updateUsername: '/updateUsername/',
   updatePassword: '/updatePassword/',
-  updateEmail: '/updateEmail/'
+  updateEmail: '/updateEmail/',
 }

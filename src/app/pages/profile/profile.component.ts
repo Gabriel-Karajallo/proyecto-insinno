@@ -8,6 +8,7 @@ import { AuthService } from '../../core/auth/auth.service';
 import { PersistenceService } from '../../core/services/persistence.service';
 import { DeleteAccountDialogComponent } from '../../shared/pages/delete-acount/delete-acount.component';
 import { User } from '../../interfaces/user';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile',

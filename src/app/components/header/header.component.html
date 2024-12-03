@@ -1,6 +1,6 @@
 <mat-sidenav-container fullscreen>
 
-  <mat-sidenav class="sidenav" #sidenav [ngStyle]="{ width: '250px' }">
+  <mat-sidenav class="sidenav" #sidenav [ngStyle]="{ width: '230px' }">
     <mat-toolbar class="menu">
       <span>Menu</span>
       <hr>
@@ -12,31 +12,28 @@
     </mat-toolbar>
 
     <mat-nav-list>
-      <mat-list-item class="sidebarItems" *ngFor="let item of sidebarItems"
+      <mat-list-item id="sidebarItems" *ngFor="let item of sidebarItems"
         (click)="item.action ? item.action() : navigateTo(item.url)" [routerLink]="item.url" (click)="sidenav.toggle()">
         <mat-icon class="icon-list" matListItemIcon>{{ item.icon }}</mat-icon>
         {{ item.label }}
       </mat-list-item>
     </mat-nav-list>
-
   </mat-sidenav>
-
-
 
   <mat-toolbar class="toolbar">
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon id="menu">menu</mat-icon>
     </button>
 
-    <span class="spacer"></span>
-
     <div class="container-title">
       <h2 class="anta-regular">INSINNO APP</h2>
-      <h3>
-        <i class="fa-regular fa-user" style="color: #ffffff;"></i>
-        {{ user?.username }}
-      </h3>
     </div>
+
+    <span class="spacer"></span>
+    <div class="search">
+      <input type="text" class="buscador">
+    </div>
+
 
   </mat-toolbar>
 

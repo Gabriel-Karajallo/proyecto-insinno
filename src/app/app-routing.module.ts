@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: LayoutComponent,
-    // canActivate: [testGuardGuard],
+    canActivate: [testGuardGuard],
     children: [
       { path: 'products', component: ProductsComponent },
       { path: 'profile', component: ProfileComponent },

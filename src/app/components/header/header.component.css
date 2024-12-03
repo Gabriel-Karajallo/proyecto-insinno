@@ -1,5 +1,8 @@
 .toolbar {
   background-color: #1770a8 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .buton-icon {
@@ -13,8 +16,17 @@
 .container-title {
   display: flex;
   justify-content: center;
-  text-align: center;
   margin-left: 20px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
 }
 
 .anta-regular {

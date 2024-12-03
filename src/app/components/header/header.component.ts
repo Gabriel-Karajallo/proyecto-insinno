@@ -9,6 +9,7 @@ import { User } from '../../interfaces/user';
   styleUrl: './header.component.css',
   styles: `
     #menu{color: #ffff;}
+    #sidebarItems{font-family:"Figtree", sans-serif; }
   `
 })
 export class HeaderComponent {
