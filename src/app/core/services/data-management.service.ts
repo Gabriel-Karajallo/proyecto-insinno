@@ -29,10 +29,6 @@ export class DataManagementService {
     return this.persistenceService.getFromLocalStorage();
   }
 
-
-
-
-
   //  obtener datos del usuario
   public getUser(id: string): Observable<any> {
     console.log('DataManagementService: ID recibido para buscar usuario:', id);
