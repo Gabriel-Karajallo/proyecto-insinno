@@ -26,6 +26,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { DeleteAccountDialogComponent } from './shared/pages/delete-acount/delete-acount.component';
 import { ContactConfirmationDialogComponent } from './shared/pages/contact-confirmation-dialog/contact-confirmation-dialog.component';
+import { ConcertPageComponent } from './pages/concert-page/concert-page.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ContactConfirmationDialogComponent } from './shared/pages/contact-confi
     ContactComponent,
     DeleteAccountDialogComponent,
     ContactConfirmationDialogComponent,
+    ConcertPageComponent,
 
   ],
 

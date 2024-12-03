@@ -10,6 +10,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { ConcertPageComponent } from './pages/concert-page/concert-page.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'contact', component: ContactComponent },
       { path: 'order', component: OrdersComponent },
       { path: '', redirectTo: '/dashboard/products', pathMatch: 'full' },
+      { path: ':id', component: ConcertPageComponent },
       { path: '**', redirectTo: '/dashboard/products' }
     ]
   },
