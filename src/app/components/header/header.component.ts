@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth/auth.service';
 import { Router } from '@angular/router';
+import { DataManagementService } from '../../core/services/data-management.service';
 import { User } from '../../interfaces/user';
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ import { User } from '../../interfaces/user';
 })
 export class HeaderComponent {
   user: User | null = null;
+
   constructor(
     private authService: AuthService,
     private router: Router,

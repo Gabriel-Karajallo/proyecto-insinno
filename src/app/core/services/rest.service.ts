@@ -42,7 +42,6 @@ export class RestService extends AbstractWebService {
     );
   }
 
-
   //actualizar contraseña
   public updatePassword(password: string, value: string): Observable<any> {
     // URL base para actualizar
