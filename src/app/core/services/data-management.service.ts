@@ -29,7 +29,7 @@ export class DataManagementService {
     return this.persistenceService.getFromLocalStorage();
   }
 
-  //  datos del usuarioObtener
+  //  obtener datos del usuario
   public getUser(id: string): Observable<any> {
     console.log('DataManagementService: ID recibido para buscar usuario:', id);
     return this.rest.getUser(id);
@@ -49,5 +49,4 @@ export class DataManagementService {
   updateEmail(email: string): Observable<any> {
     return this.rest.updateEmail('email', email);
   }
-
 }
