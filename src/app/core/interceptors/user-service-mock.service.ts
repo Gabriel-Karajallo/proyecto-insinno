@@ -10,28 +10,27 @@ import { ProfileComponent } from '../../pages/profile/profile.component';
 })
 export class UserServiceMockService implements HttpInterceptor {
 
-  constructor(
-    private ProfileComponent: ProfileComponent
-  ) { }
+
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Si isMock es false, pasa la solicitud al backend real
-    if (!environments.isMock) {
-
-
+    if (environments.isMock) {
       // Simula la respuesta al iniciar sesión
       if (req.url.endsWith('auth/login') && req.method === 'POST') {
         return of(new HttpResponse({
           status: 200,
           body: {
-            jwt: 'token123456' // Token simulado
+            jwt: 'token123456', // Token simulado
+            id: 1,
+            name: 'John',
+            email: 'johndoe@example.com',
+            password: '123456A',
           }
         }));
       }
 
       // Simula una solicitud protegida con token (ejemplo: GET /users/1)
-      if (this.ProfileComponent.loadUserData(), req.method === 'GET') {
+      if (req.url.endsWith('api/users/') && req.method === 'GET') {
 
         // Si el token es correcto, devuelve los datos simulados
         return of(new HttpResponse({
