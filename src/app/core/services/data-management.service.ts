@@ -10,7 +10,7 @@ import { environments, endPoints } from '../../environment/environment';
   providedIn: 'root'
 })
 export class DataManagementService {
-
+  private apiUrl = 'http://localhost:4200/dashboard/products';;
 
   constructor(
     private http: HttpClient,
@@ -48,5 +48,9 @@ export class DataManagementService {
   //actualizar correo
   updateEmail(email: string): Observable<any> {
     return this.rest.updateEmail('email', email);
+  }
+
+  getConcerts(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 }

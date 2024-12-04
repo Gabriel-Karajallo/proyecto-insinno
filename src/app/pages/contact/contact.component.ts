@@ -21,7 +21,6 @@ export class ContactComponent {
     });
   }
 
-
   // enviar el formulario
   onSubmit(): void {
     if (this.contactForm.valid) {
@@ -32,7 +31,7 @@ export class ContactComponent {
         this.isLoading = false;
         this.openConfirmationDialog();
         this.contactForm.reset();
-      }, 2000);
+      }, 1000);
 
       console.log(this.contactForm.value);
       // Aquí se implementará la lógica para enviar el formulario más adelante.

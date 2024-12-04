@@ -18,7 +18,6 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { LayoutComponent } from './layout/layout.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -29,6 +28,9 @@ import { ConcertPageComponent } from './pages/concert-page/concert-page.componen
 import { CardsComponent } from './components/cards/cards.component';
 import { environments } from './environment/environment';
 import { UserServiceMockService } from './core/interceptors/user-service-mock.service';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CommonModule } from '@angular/common';
+import { ProductsComponent } from './pages/products/products.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,6 @@ import { UserServiceMockService } from './core/interceptors/user-service-mock.se
     LoginComponent,
     RegisterComponent,
     Error404PageComponent,
-    LayoutComponent,
     ProfileComponent,
     HeaderComponent,
     FooterComponent,
@@ -45,20 +46,24 @@ import { UserServiceMockService } from './core/interceptors/user-service-mock.se
     ContactConfirmationDialogComponent,
     ConcertPageComponent,
     CardsComponent,
+    DashboardComponent,
+    ProductsComponent
 
   ],
 
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-
     MaterialModule,
     SharedModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+
+
   ],
   exports: [
   ],
@@ -76,6 +81,7 @@ import { UserServiceMockService } from './core/interceptors/user-service-mock.se
       multi: true
     }] : [])
   ],
+
 
   bootstrap: [AppComponent]
 })

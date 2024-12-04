@@ -5,7 +5,6 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
 import { testGuardGuard } from './core/auth/test.guard.guard';
-import { LayoutComponent } from './layout/layout.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -17,7 +16,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   {
     path: 'dashboard',
-    component: LayoutComponent,
+    component: DashboardComponent,
     canActivate: [testGuardGuard],
     children: [
       { path: 'products', component: ProductsComponent },
