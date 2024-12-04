@@ -25,11 +25,7 @@ export class HeaderComponent {
     this.authService.logout();
   }
   public sidebarItems = [
-    { label: 'Música', icon: 'music_note', url: './dashboard/products' },
-    { label: 'Arte y Teatro', icon: 'theater_comedy', url: './list' },
-    { label: 'Festivales', icon: 'celebration', url: './list' },
-    { label: 'Deporte', icon: 'sports_and_outdoors', url: './list' },
-    { label: 'Familia y Otros', icon: 'dynamic_feed', url: './list' },
+    { label: 'Eventos', icon: 'music_note', url: './dashboard/products' },
     { label: 'Contacto', icon: 'call', url: '/dashboard/contact' },
     { label: 'Perfil', icon: 'person', url: '/dashboard/profile' },
     { label: 'Cerrar sesión', icon: 'logout', action: () => this.logout() }

@@ -24,29 +24,56 @@
   flex: 1;
 }
 
-.search-container {
+/* From Uiverse.io by alexruix */
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
   position: relative;
-  width: 300px;
+  max-width: 250px;
   margin-right: 30px;
 }
 
-.search-input {
+.input {
   width: 100%;
-  padding: 10px 40px 10px 10px;
   font-size: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f3f3f4;
+  color: #0d0c22;
+  transition: .3s ease;
 }
 
-.search-icon {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #a6a4a4;
-  pointer-events: none;
+.input::placeholder {
+  color: #9e9ea7;
 }
+
+.input:focus,
+input:hover {
+  outline: none;
+  border-color: #007bff;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+}
+
+.icon {
+  position: absolute;
+  left: 1rem;
+  fill: #9e9ea7;
+  width: 1rem;
+  height: 1rem;
+}
+
+
+
+
+
+
 
 .cart-button {
   position: relative;
