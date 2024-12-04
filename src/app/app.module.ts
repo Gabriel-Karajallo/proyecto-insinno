@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { DashboardModule } from './pages/dashboard/dashboard.module';
 
 
 import { AppComponent } from './app.component';
@@ -58,7 +57,6 @@ import { UserServiceMockService } from './core/interceptors/user-service-mock.se
     ReactiveFormsModule,
 
     MaterialModule,
-    DashboardModule,
     SharedModule,
     MatSnackBarModule
   ],
