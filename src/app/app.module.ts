@@ -16,7 +16,6 @@ import { Error404PageComponent } from './shared/pages/error404-page/error404-pag
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
-import { SharedModule } from './shared/shared.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -60,7 +59,6 @@ import { ProductsComponent } from './pages/products/products.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    SharedModule,
     MatSnackBarModule,
 
 

@@ -23,9 +23,9 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'order', component: OrdersComponent },
-      { path: '', redirectTo: '/dashboard/products', pathMatch: 'full' },
+      { path: '', redirectTo: 'products', pathMatch: 'full' },
       { path: ':id', component: ConcertPageComponent },
-      { path: '**', redirectTo: '/dashboard/products' }
+      { path: '**', redirectTo: 'products' }
     ]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },

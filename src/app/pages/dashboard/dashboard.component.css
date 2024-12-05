@@ -1,5 +1,11 @@
-* {
-  height: auto !important;
-  padding: 0% !important;
-  margin: auto !important;
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem;
 }

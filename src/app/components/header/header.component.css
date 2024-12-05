@@ -4,6 +4,7 @@
   justify-content: space-between;
   align-items: center;
   align-items: center;
+  height: 90px;
 }
 
 .buton-icon {
@@ -69,12 +70,6 @@ input:hover {
   height: 1rem;
 }
 
-
-
-
-
-
-
 .cart-button {
   position: relative;
   display: flex;
@@ -109,8 +104,11 @@ input:hover {
 }
 
 @media (max-width: 768px) {
-  .search-container {
-    display: none !important;
-    ;
+  .input {
+    display: none;
+  }
+
+  .icon {
+    display: none;
   }
 }

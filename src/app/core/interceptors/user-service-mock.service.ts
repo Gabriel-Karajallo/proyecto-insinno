@@ -35,9 +35,9 @@ export class UserServiceMockService implements HttpInterceptor {
         body: [
           {
             id: 1,
-            title: 'Concierto de Coldplay',
-            description: 'Descripción.',
-            imageUrl: 'https://wallpapers.com/images/hd/coldplay-viva-la-vida-tour-qu2jse22njp9di6q.jpg'
+            title: 'Paulo Londra',
+            description: 'Actuará el 25 de abril en el Palau Sant Jordi de Barcelona y el 27 de abril en el WiZink Center de Madrid.',
+            imageUrl: 'https://uk.tmconst.com/ccp-salesforce-images/ES/paulo-londra25-1440x450.jpg?auto=webp'
           },
           {
             id: 2,
