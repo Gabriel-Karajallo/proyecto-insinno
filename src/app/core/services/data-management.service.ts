@@ -10,7 +10,7 @@ import { environments, endPoints } from '../../environment/environment';
   providedIn: 'root'
 })
 export class DataManagementService {
-  private apiUrl = 'http://localhost:4200/dashboard/products';;
+  private apiUrl = 'http://localhost:4200/dashboard/products';
 
   constructor(
     private http: HttpClient,
@@ -37,7 +37,7 @@ export class DataManagementService {
 
   //actualizar usuario
   updateUsername(username: string): Observable<any> {
-    return this.rest.updateUsername('username', username);
+    return this.rest.updateUsername(username);
   }
 
   //actualizar contraseña

@@ -7,13 +7,9 @@
   background: url('https://auth.ticketmaster.com/assets/left-panel-image.e3d210a9.png') no-repeat center center;
   background-size: cover;
   color: white;
-  height: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.col-lg-6 {
-  height: 80vh;
+  height: 700px;
 }
 
 .contactanos {

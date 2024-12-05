@@ -6,7 +6,7 @@
       <div class="content-wrapper p-4">
         <h1 class="display-4">{{ concerts[0].title }}</h1>
         <p class="lead">{{ concerts[0].description }}</p>
-        <button class="btn btn-primary">Entradas</button>
+        <button class="btn btn-primary" [routerLink]="['/dashboard', concerts[0]?.id]">Entradas</button>
       </div>
     </div>
   </div>

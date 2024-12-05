@@ -30,7 +30,7 @@ export class RestService extends AbstractWebService {
   }
 
   //actualizar username
-  public updateUsername(username: string, value: string): Observable<any> {
+  public updateUsername(username: string): Observable<any> {
     // URL base para actualizar
     const url = environments.baseUrl + environments.apiPrefix + endPoints.users + endPoints.updateUsername;
     return this.put(url, { username }).pipe(
@@ -46,6 +46,7 @@ export class RestService extends AbstractWebService {
   public updatePassword(password: string, value: string): Observable<any> {
     // URL base para actualizar
     const url = environments.baseUrl + environments.apiPrefix + endPoints.users + endPoints.updateUsername;
+    console.log('Url actualizar usuario' + url)
     return this.put(url, { password }).pipe(
       tap(response => console.log(`Respuesta de la API al actualizar ${password}:`, response)),
       catchError((error) => {

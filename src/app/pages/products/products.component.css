@@ -40,7 +40,6 @@
 .divider-line {
   border: 0;
   border-top: 2px solid #b3b3b3;
-  /* Línea fina y gris */
   width: 60%;
   margin: 10px auto;
 }
@@ -153,15 +152,6 @@
 .card-title:hover {
   color: #1770a8;
 }
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card:active {
-  transform: scale(0.95) rotateZ(1.7deg);
-}
-
 
 /* HOVER TIULO */
 .hvr-underline-from-left {
