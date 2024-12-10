@@ -1,1 +1,12 @@
-<p>concert-page works!</p>
+<div *ngIf="concert; else loading">
+  <h1>{{ concert.name }}</h1>
+  <img [src]="concert.images[0].url" alt="{{ concert.name }}" class="img-fluid">
+  <p><strong>Género:</strong> {{ concert.classifications[0]?.genre?.name }}</p>
+  <p><strong>Fecha:</strong> {{ concert.dates.start.localDate }} a las {{ concert.dates.start.localTime }}</p>
+  <p><strong>Precios:</strong> Desde {{ concert.priceRanges[0]?.min }} EUR</p>
+  <a [href]="concert.url" target="_blank" class="btn btn-primary">Ver en Ticketmaster</a>
+</div>
+
+<ng-template #loading>
+  <p>Cargando detalles del concierto...</p>
+</ng-template>

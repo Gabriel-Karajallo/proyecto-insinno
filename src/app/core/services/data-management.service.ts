@@ -1,3 +1,4 @@
+import { concerts } from './../../interfaces/concert';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -11,7 +12,7 @@ import { environments, endPoints } from '../../environment/environment';
 })
 export class DataManagementService {
   private apiUrl = 'http://localhost:4200/dashboard/products';
-
+  private concertUrl = 'http://localhost:4200/dashboard/';
   constructor(
     private http: HttpClient,
     private persistenceService: PersistenceService,
@@ -50,7 +51,22 @@ export class DataManagementService {
     return this.rest.updateEmail('email', email);
   }
 
-  getConcerts(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  //metodo get para que los products funcionen con el mock
+  // getConcerts(): Observable<any[]> {
+  //   return this.http.get<any[]>(this.apiUrl);
+  // }
+
+
+  //metodo get para la api del backend
+  getProducts(): Observable<any[]> {
+    const url = `${environments.baseUrl}${environments.apiPrefix}${endPoints.events}${endPoints.layout}`
+    return this.http.get<any[]>(url);
+
+  }
+
+  // Método para obtener los detalles de un concierto por ID
+  getConcertById(id: string): Observable<any> {
+    const url = `${environments.baseUrl}${environments.apiPrefix}/events/${id}`; // Ajusta el endpoint de acuerdo a tu API
+    return this.http.get<any>(url);
   }
 }
