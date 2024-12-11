@@ -56,7 +56,6 @@ export class DataManagementService {
   //   return this.http.get<any[]>(this.apiUrl);
   // }
 
-
   //metodo get para la api del backend
   getProducts(): Observable<any[]> {
     const url = `${environments.baseUrl}${environments.apiPrefix}${endPoints.events}${endPoints.layout}`

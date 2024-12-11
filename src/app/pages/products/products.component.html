@@ -1,6 +1,6 @@
 <div class="container-fluid p-0">
-  <!-- Primera imagen grande con título, descripción y botón alineados a la izquierda y abajo -->
-  <div *ngIf="concerts.length > 0" class="first-concert position-relative">
+  <!-- Mostrar la imagen grande solo si no estamos buscando -->
+  <div *ngIf="!isSearching && concerts.length > 0" class="first-concert position-relative">
     <img [src]="concerts[0]?.images[0]?.url" class="img-fluid full-width-image" alt="{{ concerts[0]?.name }}">
     <div class="overlay d-flex flex-column justify-content-end align-items-start">
       <div class="content-wrapper p-4">
@@ -14,26 +14,19 @@
   </div>
 </div>
 
-<!-- Título LO MÁS BUSCADO con la línea divisoria -->
+<!-- Título que se cambiará dinámicamente dependiendo de la búsqueda -->
 <div class="most-searched-title">
   <h3 class="anta-regular">{{ title }}</h3>
   <hr class="divider-line">
 </div>
 
-<!-- Mostrar un mensaje si no hay resultados -->
-<div *ngIf="concerts.length === 0" class="text-center mt-5">
-  <h5 *ngIf="isSearching">No se encontraron resultados para "{{ title }}".</h5>
-  <h5 *ngIf="!isSearching">No hay productos disponibles en este momento.</h5>
-</div>
-
-<!-- Imágenes de abajo -->
+<!-- Mostrar los productos filtrados -->
 <div class="row mt-4">
-  <div [routerLink]="[concert?.id]" class="col-6 col-md-4 mb-4" *ngFor="let concert of concerts.slice(1)">
-    <div class="image-card">
+  <div class="col-6 col-md-4 mb-4" *ngFor="let concert of filteredConcerts">
+    <div [routerLink]="[concert?.id]" class="image-card">
       <a [routerLink]="[concert?.id]">
         <img [src]="concert?.images[0]?.url" alt="{{ concert?.name }}" class="image">
       </a>
-
     </div>
     <div class="card-body">
       <p class="description">{{ concert?.classifications[0]?.genre?.name }}</p>
