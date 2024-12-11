@@ -61,7 +61,11 @@ export class DataManagementService {
   getProducts(): Observable<any[]> {
     const url = `${environments.baseUrl}${environments.apiPrefix}${endPoints.events}${endPoints.layout}`
     return this.http.get<any[]>(url);
+  }
 
+  getCity(city: string): Observable<any[]> {
+    const url = `${environments.baseUrl}${environments.apiPrefix}${endPoints.events}/city/${city}`
+    return this.http.get<any[]>(url);
   }
 
   // Método para obtener los detalles de un concierto por ID

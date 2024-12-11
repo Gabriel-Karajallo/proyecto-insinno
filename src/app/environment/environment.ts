@@ -7,6 +7,8 @@ export const environments = {
 export const endPoints = {
   users: '/users/',
   events: '/events',
+  city: '/city',
+  search: '/search',
   layout: '/popular',
   deleteUser: 'users/delete/',
   updateUsername: 'updateUser',

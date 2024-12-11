@@ -3,6 +3,7 @@ import { AuthService } from '../../core/auth/auth.service';
 import { Router } from '@angular/router';
 import { DataManagementService } from '../../core/services/data-management.service';
 import { User } from '../../interfaces/user';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,10 +15,12 @@ import { User } from '../../interfaces/user';
 })
 export class HeaderComponent {
   user: User | null = null;
+  searchQuery: string = '';
 
   constructor(
     private authService: AuthService,
     private router: Router,
+    private http: HttpClient
   ) { }
 
   // Llamada al método logout()
@@ -33,5 +36,12 @@ export class HeaderComponent {
 
   navigateTo(url: string): void {
     this.router.navigate([url]);
+  }
+
+  onSearch() {
+    if (this.searchQuery.trim()) {
+      // Navega al componente de productos y pasa el parámetro de búsqueda
+      this.router.navigate(['/dashboard/products'], { queryParams: { city: this.searchQuery } });
+    }
   }
 }

@@ -41,7 +41,8 @@
           </path>
         </g>
       </svg>
-      <input placeholder="Buscar por ciudad" type="search" class="input">
+      <input placeholder="Buscar por artista o ciudad" type="search" class="input" [(ngModel)]="searchQuery"
+        (keyup.enter)="onSearch()">
     </div>
 
 

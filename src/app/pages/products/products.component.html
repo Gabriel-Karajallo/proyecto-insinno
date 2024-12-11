@@ -16,23 +16,30 @@
 
 <!-- Título LO MÁS BUSCADO con la línea divisoria -->
 <div class="most-searched-title">
-  <h3 class="anta-regular">LO MÁS BUSCADO</h3>
+  <h3 class="anta-regular">{{ title }}</h3>
   <hr class="divider-line">
+</div>
+
+<!-- Mostrar un mensaje si no hay resultados -->
+<div *ngIf="concerts.length === 0" class="text-center mt-5">
+  <h5 *ngIf="isSearching">No se encontraron resultados para "{{ title }}".</h5>
+  <h5 *ngIf="!isSearching">No hay productos disponibles en este momento.</h5>
 </div>
 
 <!-- Imágenes de abajo -->
 <div class="row mt-4">
-  <div class="col-6 col-md-4 mb-4" *ngFor="let concert of concerts.slice(1)">
+  <div [routerLink]="[concert?.id]" class="col-6 col-md-4 mb-4" *ngFor="let concert of concerts.slice(1)">
     <div class="image-card">
       <a [routerLink]="[concert?.id]">
         <img [src]="concert?.images[0]?.url" alt="{{ concert?.name }}" class="image">
       </a>
-      <div class="card-body">
-        <p class="description">{{ concert?.classifications[0]?.genre?.name }}</p>
-        <h5 class="hvr-underline-from-left">
-          <a class="title-link" [routerLink]="[concert?.id]">{{ concert?.name }}</a>
-        </h5>
-      </div>
+
+    </div>
+    <div class="card-body">
+      <p class="description">{{ concert?.classifications[0]?.genre?.name }}</p>
+      <h5 class="hvr-underline-from-left">
+        <a class="title-link" [routerLink]="[concert?.id]">{{ concert?.name }}</a>
+      </h5>
     </div>
   </div>
 </div>

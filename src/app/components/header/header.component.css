@@ -36,11 +36,10 @@
 }
 
 .input {
-  width: 100%;
+  width: 3000px;
   font-size: 15px;
   height: 40px;
   line-height: 28px;
-  padding: 0 1rem;
   padding-left: 2.5rem;
   border: 2px solid transparent;
   border-radius: 8px;
