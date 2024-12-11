@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
   concerts: any[] = [];
+  featuredConcert: any;
   errorMenssage: string = '';
 
   constructor(private DataManagementService: DataManagementService) { }

@@ -35,7 +35,7 @@ export class UserServiceMockService implements HttpInterceptor {
         body: [
           {
             id: 1,
-            title: 'Paulo Londra',
+            name: 'Paulo Londra',
             description: 'Actuará el 25 de abril en el Palau Sant Jordi de Barcelona y el 27 de abril en el WiZink Center de Madrid.',
             imageUrl: 'https://uk.tmconst.com/ccp-salesforce-images/ES/paulo-londra25-1440x450.jpg?auto=webp'
           },

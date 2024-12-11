@@ -47,7 +47,6 @@ import { ProductsComponent } from './pages/products/products.component';
     CardsComponent,
     DashboardComponent,
     ProductsComponent
-
   ],
 
   imports: [
@@ -60,8 +59,6 @@ import { ProductsComponent } from './pages/products/products.component';
     ReactiveFormsModule,
     MaterialModule,
     MatSnackBarModule,
-
-
   ],
   exports: [
   ],

@@ -20,11 +20,11 @@ const routes: Routes = [
     canActivate: [testGuardGuard],
     children: [
       { path: 'products', component: ProductsComponent },
+      { path: 'products/:id', component: ConcertPageComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'order', component: OrdersComponent },
       { path: '', redirectTo: 'products', pathMatch: 'full' },
-      { path: ':id', component: ConcertPageComponent },
       { path: '**', redirectTo: 'products' }
     ]
   },
