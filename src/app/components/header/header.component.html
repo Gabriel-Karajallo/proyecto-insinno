@@ -1,5 +1,4 @@
 <mat-sidenav-container fullscreen>
-
   <mat-sidenav class="sidenav" #sidenav [ngStyle]="{ width: '230px' }">
     <mat-toolbar class="menu">
       <span>Menu</span>
@@ -19,7 +18,21 @@
     </mat-nav-list>
   </mat-sidenav>
 
+
+
+  <!-- ****************** -->
+  <div class="top">
+    <div class="list">
+      <ul>
+        <li>Ayuda</li>
+        <li>Vender entradas</li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- ****************** -->
   <mat-toolbar class="toolbar">
+
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon id="menu">menu</mat-icon>
     </button>
@@ -42,6 +55,11 @@
       </svg>
       <input placeholder="Buscar por artista o ciudad" type="search" class="input" [(ngModel)]="searchQuery"
         (keyup.enter)="onSearch()">
+    </div>
+
+    <div class="logout">
+      <i class="fa-regular fa-user icono-user"></i><span class="cerrar-sesion"><a href="" onclick="logout()">Cerrar
+          Sesión</a></span>
     </div>
   </mat-toolbar>
 

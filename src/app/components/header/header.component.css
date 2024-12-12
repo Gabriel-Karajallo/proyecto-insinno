@@ -1,3 +1,23 @@
+.top {
+  height: 30px;
+  background-color: #022236;
+}
+
+.list {
+  inline-size: flex;
+}
+
+.list ul {
+  display: flex;
+
+}
+
+.list ul li {
+  color: #fff;
+  margin-right: 30px;
+  margin-top: 2px;
+}
+
 .toolbar {
   background-color: #1770a8 !important;
   display: flex;
@@ -25,7 +45,7 @@
   flex: 1;
 }
 
-/* From Uiverse.io by alexruix */
+
 .group {
   display: flex;
   line-height: 28px;
@@ -102,6 +122,31 @@ input:hover {
   color: white;
 }
 
+.icon {
+  display: none;
+}
+
+.logout {
+  margin-right: 10px;
+  padding: 10px;
+  color: #fff;
+}
+
+.logout :hover {
+  color: #79b6f8;
+}
+
+.icono-user {
+  margin-right: 10px;
+  font-size: 15px;
+}
+
+.cerrar-sesion a {
+  font-size: 15px;
+  color: #ffff;
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
   .input {
     display: none;
@@ -110,4 +155,5 @@ input:hover {
   .icon {
     display: none;
   }
+
 }
