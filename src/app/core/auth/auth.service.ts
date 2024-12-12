@@ -58,7 +58,7 @@ export class AuthService {
   logout(): void {
     console.log('Eliminando token del localStorage');
     this.persistenceService.removeFromLocalStorage();  // Elimina el token
-    this.persistenceService.clearLocalStorage(); // Si tienes refresh token
+    this.persistenceService.clearLocalStorage();
     this.router.navigate(['/login']); // Redirige a la página de login
   }
 
@@ -66,7 +66,7 @@ export class AuthService {
   url = environments.baseUrl + environments.apiPrefix;
   deleteAccount(id: string): Observable<any> {
     const finalUrl = `${this.url + endPoints.deleteUser}${id}`;
-    console.log('URL generada para eliminar cuenta:', finalUrl); // Verifica la URL generada
+    console.log('URL generada para eliminar cuenta:', finalUrl);
 
     return this.AbstractWebService.delete(finalUrl, { responseType: 'text' }).pipe(
       tap(() => {
