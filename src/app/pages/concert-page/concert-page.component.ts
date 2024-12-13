@@ -40,25 +40,6 @@ export class ConcertPageComponent implements OnInit {
       },
       (error) => {
         console.error('Error al obtener los detalles del concierto:', error);
-
-        // Simulación de datos para pruebas
-        this.concert = {
-          name: 'Duki',
-          images: [{ url: 'https://www.mondosonoro.com/wp-content/uploads/2024/11/Duki.jpg' }],
-          classifications: [{ genre: { name: 'Rock' } }],
-          dates: { start: { localDate: '2023-12-12', localTime: '20:00' } },
-          _embedded: { venues: [{ name: 'Auditorio Nacional', country: { name: 'México' } }] },
-          ticketCategories: [
-            { name: 'General', price: 50 },
-            { name: 'VIP', price: 100 }
-          ]
-        };
-
-        this.tickets = this.concert.ticketCategories.map((category: any) => ({
-          category: category.name,
-          price: category.price,
-          count: 0
-        }));
       }
     );
   }

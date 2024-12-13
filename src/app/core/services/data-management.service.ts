@@ -1,7 +1,7 @@
 import { concerts } from './../../interfaces/concert';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { RestService } from './rest.service';
 import { PersistenceService } from './persistence.service';
 import { AbstractWebService } from './abstract-web.service';
@@ -13,6 +13,7 @@ import { environments, endPoints } from '../../environment/environment';
 export class DataManagementService {
   private apiUrl = 'http://localhost:4200/dashboard/products';
   private concertUrl = 'http://localhost:4200/dashboard/';
+  private mockDataUrl = '/assets/mock-data/concert-mock-data.json'; // Ruta del archivo JSON
   constructor(
     private http: HttpClient,
     private persistenceService: PersistenceService,
@@ -70,6 +71,23 @@ export class DataManagementService {
   // Método para obtener los detalles de un concierto por ID
   getConcertById(id: string): Observable<any> {
     const url = `${environments.baseUrl}${environments.apiPrefix}/events/${id}`;
-    return this.http.get<any>(url);
+    const mockData = {
+      name: 'Duki',
+      images: [{ url: 'https://www.mondosonoro.com/wp-content/uploads/2024/11/Duki.jpg' }],
+      classifications: [{ genre: { name: 'Rock' } }],
+      dates: { start: { localDate: '2023-12-12', localTime: '20:00' } },
+      _embedded: { venues: [{ name: 'Auditorio Nacional', country: { name: 'México' } }] },
+      ticketCategories: [
+        { name: 'General', price: 50 },
+        { name: 'VIP', price: 100 }
+      ]
+    };
+
+    return this.http.get<any>(url).pipe(
+      catchError((error) => {
+        console.warn('No se pudo obtener los datos del backend, usando datos simulados.', error);
+        return of(mockData); // Devolver datos simulados
+      })
+    );
   }
 }
