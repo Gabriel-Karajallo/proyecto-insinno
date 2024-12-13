@@ -69,7 +69,7 @@ export class DataManagementService {
 
   // Método para obtener los detalles de un concierto por ID
   getConcertById(id: string): Observable<any> {
-    const url = `${environments.baseUrl}${environments.apiPrefix}/events/${id}`; // Ajusta el endpoint de acuerdo a tu API
+    const url = `${environments.baseUrl}${environments.apiPrefix}/events/${id}`;
     return this.http.get<any>(url);
   }
 }

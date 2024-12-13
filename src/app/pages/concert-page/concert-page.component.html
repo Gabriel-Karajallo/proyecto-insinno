@@ -1,12 +1,43 @@
-<div *ngIf="concert; else loading">
-  <h1>{{ concert.name }}</h1>
-  <img [src]="concert.images[0].url" alt="{{ concert.name }}" class="img-fluid">
-  <p><strong>Género:</strong> {{ concert.classifications[0]?.genre?.name }}</p>
-  <p><strong>Fecha:</strong> {{ concert.dates.start.localDate }} a las {{ concert.dates.start.localTime }}</p>
-  <p><strong>Precios:</strong> Desde {{ concert.priceRanges[0]?.min }} EUR</p>
-  <a [href]="concert.url" target="_blank" class="btn btn-primary">Ver en Ticketmaster</a>
+<div class="banner" [style.backgroundImage]="'url(' + concert.images[0]?.url + ')'">
+  <div class="overlay">
+    <div class="container">
+      <div class="concert-image">
+        <img [src]="concert.images[0]?.url" alt="{{ concert.name }}">
+      </div>
+      <div class="concert-info">
+        <h1>Entradas para {{ concert.name }}</h1>
+        <p>Género: {{ concert.classifications[0]?.genre?.name }}</p>
+      </div>
+    </div>
+  </div>
 </div>
 
-<ng-template #loading>
-  <p>Cargando detalles del concierto...</p>
-</ng-template>
+<div class="container my-5">
+  <!-- Información adicional del concierto -->
+  <div *ngIf="concert" class="concert-details mt-4">
+    <p>Fecha: {{ concert.dates?.start?.localDate }} a las {{ concert.dates?.start?.localTime }}</p>
+    <p>País: {{ concert._embedded?.venues[0]?.country?.name }}</p>
+    <p>Lugar: {{ concert._embedded?.venues[0]?.name }}</p>
+  </div>
+
+  <!-- Selección de entradas -->
+  <div class="ticket-selection mt-5">
+    <h3>Selecciona tus entradas</h3>
+    <div class="ticket-category" *ngFor="let ticket of tickets; let i = index">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <span>{{ ticket.category }} - {{ ticket.price | currency }}</span>
+        <div class="ticket-counter">
+          <button (click)="removeTicket(i)" [disabled]="ticket.count === 0">-</button>
+          <span>{{ ticket.count }}</span>
+          <button (click)="addTicket(i)" [disabled]="getTotalTickets() >= maxTickets">+</button>
+        </div>
+      </div>
+    </div>
+    <p>Total de entradas seleccionadas: {{ getTotalTickets() }} / {{ maxTickets }}</p>
+  </div>
+
+  <!-- Botón de compra -->
+  <div class="checkout-button mt-4">
+    <button class="btn btn-primary btn-lg w-100" (click)="goToCheckout()">Comprar Entradas</button>
+  </div>
+</div>

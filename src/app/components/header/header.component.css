@@ -9,6 +9,8 @@
 
 .list ul {
   display: flex;
+  flex-direction: row-reverse;
+  text-decoration: none;
 
 }
 
