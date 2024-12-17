@@ -86,11 +86,11 @@ p {
 .custom-snackbar {
   margin-top: 15px;
   background-color: #1770a8 !important;
-  /* Cambia el color de fondo */
+
   color: #fff !important;
-  /* Cambia el color del texto */
+
   font-size: 16px;
-  /* Tamaño del texto */
+
   font-family: "Figtree", sans-serif;
   border-radius: 8px;
   text-align: center;

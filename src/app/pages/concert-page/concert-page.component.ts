@@ -69,7 +69,7 @@ export class ConcertPageComponent implements OnInit {
 
   // Navegar a la página de compra
   goToCheckout(): void {
-    // Almacenar las entradas seleccionadas en un servicio si es necesario
+
     this.router.navigate(['/checkout'], { state: { tickets: this.tickets, concert: this.concert } });
   }
 }
