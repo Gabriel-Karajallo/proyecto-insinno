@@ -12,9 +12,10 @@
   </div>
 </div>
 
-<div class="container my-5">
+<div class="container-details my-5">
   <!-- Información adicional del concierto -->
   <div *ngIf="concert" class="concert-details mt-4">
+    <h3>Detalles del concierto</h3>
     <p>Fecha: {{ concert.dates?.start?.localDate }} a las {{ concert.dates?.start?.localTime }}</p>
     <p>País: {{ concert._embedded?.venues[0]?.country?.name }}</p>
     <p>Lugar: {{ concert._embedded?.venues[0]?.name }}</p>

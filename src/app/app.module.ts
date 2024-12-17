@@ -30,6 +30,7 @@ import { UserServiceMockService } from './core/interceptors/user-service-mock.se
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './pages/products/products.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ProductsComponent } from './pages/products/products.component';
     ConcertPageComponent,
     CardsComponent,
     DashboardComponent,
-    ProductsComponent
+    ProductsComponent,
+    CheckoutComponent
   ],
 
   imports: [

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; // Para obtener el ID desde la URL
 import { DataManagementService } from './../../core/services/data-management.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-concert-page',
   templateUrl: './concert-page.component.html',
@@ -14,7 +14,8 @@ export class ConcertPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dataManagementService: DataManagementService
+    private dataManagementService: DataManagementService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -68,7 +69,7 @@ export class ConcertPageComponent implements OnInit {
 
   // Navegar a la página de compra
   goToCheckout(): void {
-    // Aquí puedes implementar la navegación a la página de compra
-    console.log('Ir a la página de compra con:', this.tickets);
+    // Almacenar las entradas seleccionadas en un servicio si es necesario
+    this.router.navigate(['/checkout'], { state: { tickets: this.tickets, concert: this.concert } });
   }
 }

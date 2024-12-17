@@ -7,6 +7,7 @@
   background-position: center;
   background-repeat: no-repeat;
   margin: 0;
+  overflow: hidden;
 }
 
 /* Fondo difuminado */
@@ -31,14 +32,6 @@
   display: flex;
   align-items: center;
   height: 100%;
-}
-
-/* Contenedor principal */
-.container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
 }
 
 /* Imagen del concierto */
@@ -99,4 +92,97 @@
 
 .checkout-button button:hover {
   background-color: #0056b3;
+}
+
+
+/* ************************* */
+
+/* Estilo general del contenedor */
+.container-details {
+  max-width: 900px;
+  /* Limitar el ancho del contenedor */
+  margin: 0 auto;
+  /* Centrar el contenedor horizontalmente */
+  padding: 20px;
+  /* Espaciado interno */
+  background-color: #f9f9f9;
+  /* Fondo suave */
+  border-radius: 10px;
+  /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra para un efecto flotante */
+}
+
+/* Información adicional del concierto */
+.concert-details h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.concert-details p {
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Selección de entradas */
+.ticket-selection h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.ticket-category {
+  font-size: 1rem;
+  color: #444;
+}
+
+.ticket-counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ticket-counter button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ticket-counter button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.ticket-counter span {
+  font-size: 1.2rem;
+}
+
+/* Total de entradas */
+.ticket-selection p {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Botón de compra */
+.checkout-button button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-button button:hover {
+  background-color: #218838;
 }

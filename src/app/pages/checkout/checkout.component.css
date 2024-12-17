@@ -1,0 +1,33 @@
+.checkout-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-container h2,
+h3,
+h4 {
+  color: #333;
+}
+
+.ticket-summary ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ticket-summary li {
+  margin: 5px 0;
+  color: #555;
+}
+
+.ticket-summary p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.form-group {
+  margin-top: 15px;
+}

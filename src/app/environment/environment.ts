@@ -10,7 +10,7 @@ export const endPoints = {
   city: '/city',
   search: '/search',
   layout: '/popular',
-  deleteUser: 'users/delete/',
+  deleteUser: 'delete/',
   updateUsername: 'updateUser',
   updatePassword: 'updatePassword/',
   updateEmail: 'updateEmail/',

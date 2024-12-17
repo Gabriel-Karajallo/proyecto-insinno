@@ -65,7 +65,7 @@ export class AuthService {
   // Eliminar cuenta del usuario
   url = environments.baseUrl + environments.apiPrefix;
   deleteAccount(id: string): Observable<any> {
-    const finalUrl = `${this.url + endPoints.deleteUser}${id}`;
+    const finalUrl = `${this.url + endPoints.users + endPoints.deleteUser}${id}`;
     console.log('URL generada para eliminar cuenta:', finalUrl);
 
     return this.AbstractWebService.delete(finalUrl, { responseType: 'text' }).pipe(
