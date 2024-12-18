@@ -2,16 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; // Para obtener el ID desde la URL
 import { DataManagementService } from './../../core/services/data-management.service';
 import { Router } from '@angular/router';
+import { sliderAnimation } from '../../shared/animations/animations';
 @Component({
   selector: 'app-concert-page',
   templateUrl: './concert-page.component.html',
-  styleUrls: ['./concert-page.component.css']
+  styleUrls: ['./concert-page.component.css'],
+  animations: [sliderAnimation]
 })
 export class ConcertPageComponent implements OnInit {
   concert: any; // Datos del concierto
   tickets: { category: string, price: number, count: number }[] = []; // Información de entradas
   maxTickets: number = 6; // Límite de entradas por categoría
-
+  isInfoVisible: boolean = false; // Estado para mostrar u ocultar la información
   constructor(
     private route: ActivatedRoute,
     private dataManagementService: DataManagementService,
@@ -69,7 +71,20 @@ export class ConcertPageComponent implements OnInit {
 
   // Navegar a la página de compra
   goToCheckout(): void {
+    if (this.getTotalTickets() === 0) {
+      alert('Debes seleccionar al menos una entrada antes de continuar.');
+      return;
+    }
+    // Si ya hay entradas seleccionadas, navegar al checkout
+    this.router.navigate(['checkout'], {
+      state: {
+        tickets: this.tickets,
+        concert: this.concert,
+      },
+    });
+  }
 
-    this.router.navigate(['/checkout'], { state: { tickets: this.tickets, concert: this.concert } });
+  toggleInfo(): void {
+    this.isInfoVisible = !this.isInfoVisible; // Alternar la visibilidad del texto
   }
 }

@@ -11,6 +11,7 @@ export class CheckoutComponent implements OnInit {
   tickets: any[] = [];
   concert: any = null;
   email: string = '';
+  purchaseSuccess: boolean = false; // Variable para controlar si mostrar el aviso
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -42,8 +43,12 @@ export class CheckoutComponent implements OnInit {
 
     this.http.post('http://backend.api/purchase', purchaseData).subscribe(
       () => {
-        alert('¡Compra confirmada! Revisa tu correo electrónico para más detalles.');
-        this.router.navigate(['/']);
+        // Cambiar el estado a éxito y mostrar el aviso
+        this.purchaseSuccess = true;
+
+        // Opcional: Limpiar formulario o datos
+        this.email = '';
+        this.tickets = [];
       },
       (error) => {
         console.error('Error al confirmar la compra:', error);

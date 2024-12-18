@@ -6,7 +6,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { zoomInAnimation } from '../../shared/animations/animations';
 import { PersistenceService } from '../../core/services/persistence.service';
 import { DataManagementService } from '../../core/services/data-management.service';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,13 +27,36 @@ export class LoginComponent implements OnInit {
     private AuthService: AuthService,
     private router: Router,
     private PersistenceService: PersistenceService,
-    private DataManagementService: DataManagementService) {
+    private DataManagementService: DataManagementService,
+    private http: HttpClient,
+  ) {
 
     //Formularo reactivo
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required,]],
     });
+  }
+
+  authenticateWithGoogle(): void {
+    // URL de la API de backend para la autenticación con Google
+    const googleAuthUrl = 'http://192.168.1.191:8080/oauth2/authorization/google';
+
+    window.location.href = googleAuthUrl;
+
+    // Hacer la solicitud GET
+    // this.http.get(googleAuthUrl, { responseType: 'text' }).subscribe(
+    //   (response) => {
+    //     console.log('Autenticación exitosa:', response);
+
+
+    //     this.router.navigate(['/dashboard']);
+    //   },
+    //   (error) => {
+    //     console.error('Error en la autenticación con Google:', error);
+    //     alert('Hubo un error al intentar autenticar con Google. Intenta de nuevo.');
+    //   }
+    // );
   }
 
   ngOnInit(): void {

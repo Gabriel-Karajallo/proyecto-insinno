@@ -40,6 +40,8 @@ export class AuthService {
     );
   }
 
+
+
   // Verificar si el usuario está autenticado
   isAuthenticated(): boolean {
     return this.DataManagementService.getToken() !== null;
@@ -78,4 +80,7 @@ export class AuthService {
       })
     );
   }
+
+
+
 }

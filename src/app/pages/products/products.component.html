@@ -22,7 +22,8 @@
 
 <!-- Mostrar los productos filtrados -->
 <div class="row mt-4">
-  <div class="col-6 col-md-4 mb-4" *ngFor="let concert of filteredConcerts">
+  <div class="col-12 col-md-4 mb-4 sm-6" *ngFor="let concert of filteredConcerts">
+    <!--col-12 col-sm-6 col-md-4 col-lg-3 mb-4<-->
     <div [routerLink]="[concert?.id]" class="image-card">
       <a [routerLink]="[concert?.id]">
         <img [src]="concert?.images[0]?.url" alt="{{ concert?.name }}" class="image">

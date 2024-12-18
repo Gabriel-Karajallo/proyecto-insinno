@@ -10,6 +10,10 @@
   overflow: hidden;
 }
 
+.container {
+  display: flex;
+}
+
 /* Fondo difuminado */
 .banner::before {
   content: "";
@@ -41,6 +45,11 @@
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin-right: 20px;
+}
+
+.concert-info {
+  align-content: center;
 }
 
 /* Información del concierto */
@@ -48,6 +57,7 @@
   font-size: 2rem;
   color: white;
   margin: 0;
+  align-content: center;
 }
 
 .concert-info p {
@@ -167,8 +177,8 @@
 .ticket-selection p {
   font-size: 1rem;
   font-weight: bold;
-  text-align: center;
   margin-top: 10px;
+  text-align: right;
 }
 
 /* Botón de compra */
@@ -185,4 +195,53 @@
 
 .checkout-button button:hover {
   background-color: #218838;
+}
+
+
+
+/* Estilo para la franja superior */
+.info-banner {
+  background-color: #f8d7da;
+  /* Puedes cambiar el color */
+  color: #721c24;
+  /* Color del texto */
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilo para el botón de la flecha */
+.info-banner button {
+  background: transparent;
+  border: none;
+  color: #721c24;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Estilo para el texto desplegable */
+.info-text {
+  background-color: #f8f9fa;
+  /* Fondo claro */
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.info-text ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.info-text li {
+  margin-bottom: 10px;
+}
+
+/* Añadir un poco de espacio entre la franja y el resto del contenido */
+.container-details {
+  margin-top: 20px;
 }

@@ -13,12 +13,38 @@
 </div>
 
 <div class="container-details my-5">
+  <!-- Franja con el texto "Información importante" y un icono de flecha -->
+  <div class="info-banner d-flex justify-content-between align-items-center">
+    <span>Información importante</span>
+    <button class="btn btn-link p-0" (click)="toggleInfo()">
+      <i [class]="isInfoVisible ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"></i>
+    </button>
+  </div>
+
+  <!-- Texto desplegable -->
+  <div class="info-text" *ngIf="isInfoVisible" [@slideIn]>
+    <ul>
+      <li>
+        Las personas con Movilidad Reducida se ubicarán en una zona determinada del recinto...
+      </li>
+      <li>
+        La celebración del espectáculo está sujeta a la normativa establecida por las autoridades competentes...
+      </li>
+      <li>
+        Los menores de 14 años solo podrán acceder acompañados de un adulto.
+      </li>
+      <li>
+        Se informa a los asistentes que durante el evento se realizarán fotos y videos del espectáculo...
+      </li>
+    </ul>
+  </div>
+
   <!-- Información adicional del concierto -->
   <div *ngIf="concert" class="concert-details mt-4">
     <h3>Detalles del concierto</h3>
-    <p>Fecha: {{ concert.dates?.start?.localDate }} a las {{ concert.dates?.start?.localTime }}</p>
-    <p>País: {{ concert._embedded?.venues[0]?.country?.name }}</p>
-    <p>Lugar: {{ concert._embedded?.venues[0]?.name }}</p>
+    <p><strong>Fecha:</strong> {{ concert.dates?.start?.localDate }} a las {{ concert.dates?.start?.localTime }}</p>
+    <p><strong>País:</strong> {{ concert._embedded?.venues[0]?.country?.name }}</p>
+    <p><strong>Lugar:</strong> {{ concert._embedded?.venues[0]?.name }}</p>
   </div>
 
   <!-- Selección de entradas -->
@@ -34,11 +60,15 @@
         </div>
       </div>
     </div>
-    <p>Total de entradas seleccionadas: {{ getTotalTickets() }} / {{ maxTickets }}</p>
+    <p class="entradas">Total de entradas seleccionadas: {{ getTotalTickets() }} / {{ maxTickets }}</p>
   </div>
 
+  <p *ngIf="getTotalTickets() === 0" class="text-danger">
+    Debes seleccionar al menos una entrada para continuar.
+  </p>
   <!-- Botón de compra -->
   <div class="checkout-button mt-4">
-    <button class="btn btn-primary btn-lg w-100" (click)="goToCheckout()">Comprar Entradas</button>
+    <button class="btn btn-primary btn-lg w-100" (click)="goToCheckout()" [disabled]="getTotalTickets() === 0">Comprar
+      Entradas</button>
   </div>
 </div>

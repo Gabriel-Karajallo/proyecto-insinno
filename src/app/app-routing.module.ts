@@ -11,6 +11,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ConcertPageComponent } from './pages/concert-page/concert-page.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,11 +24,16 @@ const routes: Routes = [
       { path: 'products', component: ProductsComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'contact', component: ContactComponent },
-      { path: 'products/:id', component: ConcertPageComponent },
-      { path: 'checkout', component: CheckoutComponent },
+      {
+        path: 'products/:id', component: ConcertPageComponent,
+        children: [
+          { path: 'checkout', component: CheckoutComponent },
+        ]
+      },
       { path: 'order', component: OrdersComponent },
       { path: '', redirectTo: 'products', pathMatch: 'full' },
-      { path: '**', redirectTo: 'products' }
+      { path: '**', redirectTo: 'products' },
+
     ]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
